@@ -6,108 +6,135 @@
     <description>Recent content in Portfolios on Blake Shurtz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Nov 2016 20:23:59 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 07 Feb 2020 19:41:01 +0530</lastBuildDate>
     
 	<atom:link href="https://blakeshurtz.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Name of the work 2</title>
-      <link>https://blakeshurtz.github.io/portfolio/work2/</link>
+      <title>Mixed Effects ANOVA</title>
+      <link>https://blakeshurtz.github.io/portfolio/mixedeffectsanova/</link>
+      <pubDate>Fri, 07 Feb 2020 19:41:01 +0530</pubDate>
+      
+      <guid>https://blakeshurtz.github.io/portfolio/mixedeffectsanova/</guid>
+      <description>&lt;p&gt;Bayesian Workflow using the RStan Ecosystem&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Bayesian Baseball</title>
+      <link>https://blakeshurtz.github.io/portfolio/bayesianbaseball/</link>
       <pubDate>Sat, 05 Nov 2016 19:41:01 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work2/</guid>
-      <description>&lt;p&gt;When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/bayesianbaseball/</guid>
+      <description>&lt;p&gt;Masters project presented at the 2019 Joint Statistical Meetings&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Name of the work 3</title>
-      <link>https://blakeshurtz.github.io/portfolio/work3/</link>
+      <title>Sentiment Analysis with Neural Networks</title>
+      <link>https://blakeshurtz.github.io/portfolio/nlp/</link>
+      <pubDate>Sat, 05 Nov 2016 19:41:01 +0530</pubDate>
+      
+      <guid>https://blakeshurtz.github.io/portfolio/nlp/</guid>
+      <description>&lt;p&gt;Language and classification models built with fastai and deployed on Render.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sales/Marketing Pipeline</title>
+      <link>https://blakeshurtz.github.io/portfolio/marketingpipeline/</link>
       <pubDate>Sat, 05 Nov 2016 19:44:32 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work3/</guid>
-      <description>&lt;p&gt;Fifth abundantly made Give sixth hath. Cattle creature i be don&amp;rsquo;t them.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/marketingpipeline/</guid>
+      <description>&lt;p&gt;Modeling a marketing &amp;amp; sales funnel from source to close.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Item without image</title>
-      <link>https://blakeshurtz.github.io/portfolio/work4/</link>
+      <title>Actuarial Triangles</title>
+      <link>https://blakeshurtz.github.io/portfolio/actuarialtriangles/</link>
       <pubDate>Sat, 05 Nov 2016 19:50:47 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work4/</guid>
-      <description>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/actuarialtriangles/</guid>
+      <description>&lt;p&gt;Forecasting losses for insurance claims using JAGS in R.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Name of the work 5</title>
-      <link>https://blakeshurtz.github.io/portfolio/work5/</link>
+      <title>Switcher</title>
+      <link>https://blakeshurtz.github.io/portfolio/switcher/</link>
       <pubDate>Sat, 05 Nov 2016 19:53:42 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work5/</guid>
-      <description>&lt;p&gt;Fifth abundantly made Give sixth hath. Cattle creature i be don&amp;rsquo;t them.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/switcher/</guid>
+      <description>&lt;p&gt;Enterprise-level app for dynamic pricing / bidding / contract creation using VBA.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Name of the work 6</title>
-      <link>https://blakeshurtz.github.io/portfolio/work6/</link>
+      <title>ML Workflow for R</title>
+      <link>https://blakeshurtz.github.io/portfolio/mlcaret/</link>
       <pubDate>Sat, 05 Nov 2016 19:56:17 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work6/</guid>
-      <description>&lt;p&gt;Fifth abundantly made Give sixth hath. Cattle creature i be don&amp;rsquo;t them.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/mlcaret/</guid>
+      <description>&lt;p&gt;Quickly find the best ML Model Using Caret&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Name of the work 7</title>
-      <link>https://blakeshurtz.github.io/portfolio/work7/</link>
+      <title>Speedy ML</title>
+      <link>https://blakeshurtz.github.io/portfolio/speedyml/</link>
       <pubDate>Sat, 05 Nov 2016 19:57:40 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work7/</guid>
-      <description>&lt;p&gt;Fifth abundantly made Give sixth hath. Cattle creature i be don&amp;rsquo;t them.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/speedyml/</guid>
+      <description>&lt;p&gt;10x your ML models using AWS databases and an EC2 instance.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Name of the work 8</title>
-      <link>https://blakeshurtz.github.io/portfolio/work8/</link>
+      <title>Modeling Contagion with Markov Chains</title>
+      <link>https://blakeshurtz.github.io/portfolio/contagionmarkov/</link>
       <pubDate>Sat, 05 Nov 2016 19:59:22 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work8/</guid>
-      <description>&lt;p&gt;Fifth abundantly made Give sixth hath. Cattle creature i be don&amp;rsquo;t them.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/contagionmarkov/</guid>
+      <description>&lt;p&gt;Is it rational to quarantine sick kids?&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Item with image</title>
-      <link>https://blakeshurtz.github.io/portfolio/work9/</link>
+      <title>Modeling sampling variability using a nested experimental design</title>
+      <link>https://blakeshurtz.github.io/portfolio/shinystan/</link>
       <pubDate>Sat, 05 Nov 2016 20:02:19 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work9/</guid>
-      <description>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/shinystan/</guid>
+      <description>&lt;p&gt;A model for airflow quantity using multiple measurement tools and diagnostic procedures&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Item with image</title>
-      <link>https://blakeshurtz.github.io/portfolio/work10/</link>
+      <title>A Negative Binomial Model for Predicting Service Calls</title>
+      <link>https://blakeshurtz.github.io/portfolio/servicecalls/</link>
       <pubDate>Sat, 05 Nov 2016 20:22:08 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work10/</guid>
-      <description>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/servicecalls/</guid>
+      <description>&lt;p&gt;It is a truism in the HVAC industry that hotter weather in the 90’s, 100’s and beyond is good for business.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Item with image</title>
-      <link>https://blakeshurtz.github.io/portfolio/work11/</link>
+      <title>Bike City</title>
+      <link>https://blakeshurtz.github.io/portfolio/bikecity/</link>
       <pubDate>Sat, 05 Nov 2016 20:23:59 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work11/</guid>
-      <description>&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/bikecity/</guid>
+      <description>&lt;p&gt;A shinydashboard showing real-time bike usage across San Francisco.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Name of the work 1</title>
-      <link>https://blakeshurtz.github.io/portfolio/work1/</link>
+      <title>Presenting Data in the Human Environment</title>
+      <link>https://blakeshurtz.github.io/portfolio/humanenvironment/</link>
+      <pubDate>Sat, 05 Nov 2016 20:23:59 +0530</pubDate>
+      
+      <guid>https://blakeshurtz.github.io/portfolio/humanenvironment/</guid>
+      <description>&lt;p&gt;I argue that there are a range of human environments for interpreting data and that any presentation of results should be crafted around this context.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>An Exploratory Investigation of University of California Admissions</title>
+      <link>https://blakeshurtz.github.io/portfolio/ucadmissions/</link>
       <pubDate>Sat, 05 Nov 2016 18:25:22 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/work1/</guid>
-      <description>&lt;p&gt;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life. One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/ucadmissions/</guid>
+      <description>&lt;p&gt;Admissions locally and globally, and the effect on competition.&lt;/p&gt;</description>
     </item>
     
   </channel>

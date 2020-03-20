@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Sales/Marketing Pipeline</title>
+<meta name="description" content="Describe your website">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/owl.theme.css">
+
+
+  <link href="https://blakeshurtz.github.io/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://blakeshurtz.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://blakeshurtz.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+    
+      <p class="sidebar-p">I am a data analyst with 10 years of experience in applying data-driven thinking in a small business context. I have extensive experience in Excel, SQL and R.</p>
+    
+      <p class="sidebar-p">Originally from the Bay Area, currently based in Davis, CA.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://blakeshurtz.github.io/portfolio/">Home</a></li>
+      
+        <li><a href="https://blakeshurtz.github.io/about/">About</a></li>
+      
+        <li><a href="https://blakeshurtz.github.io/contact/">Get in touch</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  <a href="https://www.facebook.com/blake.shurtz.5" data-animate-hover="pulse" class="external facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  
+  
+  
+  <a href="https://twitter.com/blakeobeans" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:blakeobeans@gmail.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  <a href="https://www.linkedin.com/in/blakeshurtz/" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  <a href="https://stats.stackexchange.com/users/206673/blake-shurtz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-stack-overflow"></i>
+  </a>
+  
+  
+  <a href="https://github.com/blakeshurtz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  <a href="https://www.youtube.com/channel/UCPDv9VWu9TjTmxja-qLEvVA?view_as=subscriber" data-animate-hover="pulse" class="external">
+    <i class="fa fa-youtube"></i>
+  </a>
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2020 Blake Shurtz |
+        
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Sales/Marketing Pipeline</h1>
+         <p>Modeling a marketing &amp; sales funnel from source to close.</p>
+
+<p>Sales drives business. A common framework for thinking about sales is &ldquo;the funnel.&rdquo; The widest part of the funnel comprises all of your <em>potential</em> leads. Customers are winnowed down until you have your closed sales, which pass through the funnel.</p>
+
+<p>Sales drives business, but they owe a lot of lead generation to marketing. In my experience, the era of sales generating their leads is finished. Marketing generates leads through multiple sources.</p>
+
+<p>Using R, I created a D3-type Sankey Diagram to illustrate all of the lead sources in our business. For the purpose of data privacy data and data sources have been synthesized.</p>
+
+<p><img src="/img/portfolio/sankey.jpeg" alt="caption" /></p>
+
+<p>We use a two-layer marketing structure in our business. For example, leads may come from a newspaper source, and there are a variety of newspapers in which we advertise. So &ldquo;newspaper&rdquo; is a marketing category among others, while <em>within</em> newspapers there are multiple subcategories. So in the diagram above, &ldquo;Sub_2_1&rdquo; to &ldquo;Sub_2_4&rdquo; could represent individual newspapers while &ldquo;Primary 3&rdquo; can represent newspapers. While I didn&rsquo;t take the time to properly color code each category, this can be done manually. (Actually, I think someone should write an R package to make this easier.)</p>
+
+<p>The Sankey diagram is a great illustration of a sales funnel, but what we really want to know is- given a sales lead category, what is the probability of a close?</p>
+
+<p>There are a variety of models to choose from. Machine learning works best, but I like to run an inferential model side by side in order to perform probabilistic inference on my model parameters in order to gain real insight on how our business works. My choice model is a bayesian hierarchical model executed in Stan with weakly imformative priors.</p>
+
+<blockquote>
+<p>Multi-level models provide a good structural fit to the hierarchical nature of the marketing data.</p>
+</blockquote>
+
+<p>Because the model is a binary classification model (close/no close), I chose to do an animation to visualize the accuracy of the classification. Credit for the code goes to <a href="https://www.hvitfeldt.me/blog/recreate-sankey-flow-chart/">Emil Hvitfeldt</a></p>
+
+<p><img src="/img/portfolio/classification.webp" alt="caption" /></p>
+
+<p>The visualization gives an idea of the amount of type 1 and 2 errors along with an overall impression of accuracy, which is in the 90% range.</p>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://blakeshurtz.github.io/js/jquery.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/bootstrap.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/jquery.cookie.js"> </script>
+<script src="https://blakeshurtz.github.io/js/ekko-lightbox.js"></script>
+<script src="https://blakeshurtz.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/owl.carousel.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>

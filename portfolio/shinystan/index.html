@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Modeling sampling variability using a nested experimental design</title>
+<meta name="description" content="Describe your website">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/owl.theme.css">
+
+
+  <link href="https://blakeshurtz.github.io/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://blakeshurtz.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://blakeshurtz.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+    
+      <p class="sidebar-p">I am a data analyst with 10 years of experience in applying data-driven thinking in a small business context. I have extensive experience in Excel, SQL and R.</p>
+    
+      <p class="sidebar-p">Originally from the Bay Area, currently based in Davis, CA.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://blakeshurtz.github.io/portfolio/">Home</a></li>
+      
+        <li><a href="https://blakeshurtz.github.io/about/">About</a></li>
+      
+        <li><a href="https://blakeshurtz.github.io/contact/">Get in touch</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  <a href="https://www.facebook.com/blake.shurtz.5" data-animate-hover="pulse" class="external facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  
+  
+  
+  <a href="https://twitter.com/blakeobeans" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:blakeobeans@gmail.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  <a href="https://www.linkedin.com/in/blakeshurtz/" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  <a href="https://stats.stackexchange.com/users/206673/blake-shurtz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-stack-overflow"></i>
+  </a>
+  
+  
+  <a href="https://github.com/blakeshurtz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  <a href="https://www.youtube.com/channel/UCPDv9VWu9TjTmxja-qLEvVA?view_as=subscriber" data-animate-hover="pulse" class="external">
+    <i class="fa fa-youtube"></i>
+  </a>
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2020 Blake Shurtz |
+        
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Modeling sampling variability using a nested experimental design</h1>
+         <p>A model for airflow quantity using multiple measurement tools and diagnostic procedures</p>
+
+<p>This is a post about working with engineering data. <a href="https://github.com/blakeobeans/experiments_engineering">Github here</a>.</p>
+
+<p>The more focused we are on a task, the more likely we are to think that our sample data is all there is. We may vaguely define our population and its parameters. But after a moment of pondering, we usually get back to work.</p>
+
+<p>There are different ways of thinking about data.  Usually, we think of <strong>nuts-and-bolts machine data</strong> as sample data.</p>
+
+<p><img src="/img/portfolio/evolution.png" alt="This is me" /></p>
+
+<p>This is pragmatic, but it leaves us at a loss for <em>greater accuracy</em>. This is an example about HVAC machines, which produce air. We can&rsquo;t see air, but we can measure it.</p>
+
+<p>Thinking like a Bayesian, I&rsquo;m going to write up my model starting with the parameter I want to know, <strong>total_system_airflow</strong>. I&rsquo;ll assume that it&rsquo;s normally distributed due to being a function of many physical processes and laws.</p>
+
+<p>The environment, whether you&rsquo;re in a lab or uncontrolled setting, matters. The diagnostic tools have measurement error.</p>
+
+<blockquote>
+<p>OK, I&rsquo;ll backup. Anyway, here&rsquo;s a workflow for figuring it all out.</p>
+</blockquote>
+
+<p>We can&rsquo;t measure <strong>total_system_airflow</strong> without introducing variance. There are lots of sources of variance, including that based on the measurement itself.</p>
+
+<p>We can introduce system-level variance by measuring different aspects of machine performance. This can be done using built-in diagnostic machines. These can be compared to system-external measurements.</p>
+
+<p>Measuring machine performance at multiple levels (machine <em>i</em> in environment <em>j</em>) adds yet more uncertainty from the environment. Adding a varying-intercept term allows for testing in different environments.</p>
+
+<p>I&rsquo;m going to code my model up in Stan. Non-centered re-parameterization works best.</p>
+
+<p><img src="/img/portfolio/Rplot.jpeg" alt="This is me" /></p>
+
+<p><strong>sys-sig</strong> represents environmental variance. Most of the variance comes from the environment. <strong>sigma</strong> represents data from multiple measurements on the machine itself.</p>
+
+<p>I love Bayesian statistics because it tells me the parameter I want to know. This is the population parameter <em>for the system itself.</em></p>
+
+<pre><code class="language-r">            mean se_mean     sd   2.5%    25%    50%    75%   97.5% n_eff Rhat
+b0          0.13    0.11   4.87  -9.40  -3.27   0.19   3.52    9.52  2110 1.00
+b1[1]     736.85    7.13 182.06 364.96 614.85 741.02 859.51 1094.83   652 1.01
+b1[2]     599.41    5.36 145.70 315.17 502.22 599.18 697.40  884.46   740 1.00
+b1[3]     789.73    6.20 168.34 464.11 679.87 791.09 904.09 1119.74   737 1.00
+g0          0.00    0.02   1.01  -1.99  -0.70   0.00   0.65    1.97  1974 1.00
+b_tesp     -0.03    0.02   1.01  -1.95  -0.71  -0.04   0.67    1.97  2045 1.00
+b_sys_cfm   0.68    0.01   0.16   0.38   0.58   0.69   0.79    1.00   749 1.00
+sys_sig    34.78    4.04  34.66   0.20   1.93  33.00  52.74  123.00    74 1.04
+b_dl       -0.02    0.03   0.79  -1.55  -0.56  -0.03   0.51    1.55   748 1.00
+sigma      26.68    4.24  38.78   0.12   0.98   4.74  43.99  118.07    84 1.03
+lp__      -23.44    0.52   4.71 -33.61 -26.46 -22.74 -19.92  -15.69    81 1.06
+</code></pre>
+
+<p>The three systems in the b1[i] give coefficients for the true expectation of machine output. Other coefficients give variance and provide ranges in equipment calibration and performance effects.</p>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://blakeshurtz.github.io/js/jquery.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/bootstrap.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/jquery.cookie.js"> </script>
+<script src="https://blakeshurtz.github.io/js/ekko-lightbox.js"></script>
+<script src="https://blakeshurtz.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/owl.carousel.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>
