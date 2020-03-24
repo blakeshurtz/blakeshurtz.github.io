@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Actuarial Triangles</title>
+<title>Storage Migration to the Cloud</title>
 <meta name="description" content="Describe your website">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -118,24 +118,80 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>Actuarial Triangles</h1>
-         <p>Forecasting losses for insurance claims using JAGS in R.</p>
+         <h1>Storage Migration to the Cloud</h1>
+         <p>From ad hoc data gathering to a secure relational database on AWS</p>
 
-<p><img src="/img/portfolio/triangletable.png" alt="This is me" /></p>
+<hr />
 
-<p>The each row in the table above represents an annually renewed claim. The values in each row show how much the claim costs to an insurer. The year is broken up in to 10 &ldquo;development lags&rdquo; spanning the duration of the year.</p>
+<p>When I first began creating data-heavy reports for management, I had to consult multiple data sources from across departments. This was a grinding inefficiency in my workflow.
+Furthermore, sometimes I needed to work from home, which added another layer of difficulty to accessing data.
+I needed the data to be immediately available as soon as the research question dropped.</p>
 
-<p>The jagged line on the table represents the present period. We have the data to the left and we want to forecast the data to the right.</p>
+<p><em>I needed a cloud database.</em></p>
 
-<blockquote>
-<p>The model is essentially a bayesian stochastic regression. It&rsquo;s a linear function, where the intercept represents the year and there is a varying slope term for each development lag. Because the model is bayesian, the intercept can be denoted as a variable that has a correlation (another variable) with previous years.</p>
-</blockquote>
+<h4 id="creating-a-database-instance">Creating a Database Instance</h4>
 
-<p>Eventually, we&rsquo;ll know the values of the data to the right. This means we can compare our model to actual results.</p>
+<p>There are many options for low-cost relational databases in the cloud. Both
+<a href="https://aws.amazon.com/rds/?sc_ichannel=ha&amp;sc_icampaign=pac_rds_console_q2_2018&amp;sc_isegment=en&amp;sc_iplace=console_ed&amp;sc_icontent=awssm-776&amp;trk=ha_awssm-776">Amazon Web Services</a>
+ and
+ <a href="https://azure.microsoft.com/en-us/pricing/details/sql-database/single/">Microsoft Azure</a> offer free 12 month trials, followed by data usage-based pricing plans.</p>
 
-<p>I added adaptive priors to the model in order to improve predictions. My results indicated a small increase in predictive accuracy, particularly for triangles with no change between lag periods. (See table above.)</p>
+<p>To connect to my cloud database, I used <a href="https://stackoverflow.com/questions/28429493/how-to-connect-mysql-workbench-to-amazon-rds">MySQL Workbench</a>.
+I just added a new connection, then entered the endpoint, port, username and password info.
+Within the AWS instance dashboard, I also needed to assign a
+ <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html#CHAP_SettingUp.SecurityGroup">security group</a>
+ to multiple IPs in order to allow access at both my home and office.</p>
 
-<p><a href="https://github.com/blakeobeans/actuarialsci">Project here</a>.</p>
+<h4 id="storage-migration">Storage Migration</h4>
+
+<p>Our office leases a CRM tool, <a href="http://www.successware21.com/">Successware21</a>, which has a SQL backend but a clunky userform-based front-end.
+Despite the SQL backend, Successware&rsquo;s data was not tidy when exported to a .csv file.
+An R script was written to clean each file prior to writing to the RDBS.
+For especially messy datasets, Visual Basic in Excel was also used.</p>
+
+<h4 id="database-model">Database Model</h4>
+
+<p>In order to visualize the connections between the tables and variables, I created a database model using <a href="https://dbdiagram.io/home">dbdiagram.io</a>, which uses <a href="https://www.dbml.org/home/#intro">Database Markup Language (DBML)</a> to structure the model from the command line.</p>
+
+<p><img src="/img/portfolio/greiner-db-design.png" alt="This is me" /></p>
+
+<h4 id="documentation">Documentation</h4>
+
+<p>The process of exporting, cleaning and writing the data to the database is thoroughly <a href="https://github.com/blakeshurtz/mysql-script-lib">documented in a Github repo</a>.</p>
+
+<p>The documentation consists of two parts: a &ldquo;how-to&rdquo; user guide for exporting data and references to project resources including the revision history, data dictionary (tables, columns, data types and values), SQL queries and more.</p>
+
+<h4 id="maintenance">Maintenance</h4>
+
+<p>Finally, the database is ready to go. All that I need to do is update it on a regular basis.</p>
+
+<h4 id="analytics">Analytics</h4>
+
+<p>Whenever I have a research question, I can log into whatever analytics software I like and get to work.</p>
+
+<p>In R Studio, I use either the <a href="https://db.rstudio.com/dbi/">DBI</a> or <a href="https://github.com/r-dbi/RMariaDB">RMariaDB</a> packages to download my data. All it takes is a few lines of code:</p>
+
+<pre><code class="language-r">library(RMariaDB)
+con &lt;- dbConnect(MariaDB(),
+                 user = '[USERNAME]',
+                 password = '[PASSWORD]',
+                 host = '[INSTANCE_ENDPOINT]',
+                 dbname='[SCHEMA]')
+mydata &lt;- dbReadTable(conn = con, name = '[TABLENAME]', value = [TABLENAME], overwrite = TRUE)
+</code></pre>
+
+<p>In a Jupyter Notebook running Python, I use the <a href="https://www.sqlalchemy.org/">sqlalchemy</a> module.</p>
+
+<pre><code class="language-py">import sqlalchemy as db
+connection_string = &quot;mysql://[USERNAME]:[PASSWORD]@[ENDPOINT]:[PORT]/[SCHEMA]&quot;
+engine = db.create_engine(connection_string)
+query = &quot;select * from [TABLE]&quot;
+df = pd.read_sql_query(query, engine)
+</code></pre>
+
+<h4 id="wrapping-up">Wrapping Up</h4>
+
+<p>In the end, I&rsquo;ve come to the conclustion that database administration and data analysis are like peanut butter and jelly: They&rsquo;re both great on their own, but they taste even better together.</p>
          
       </div>
     </div>

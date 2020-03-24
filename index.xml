@@ -48,12 +48,12 @@
     </item>
     
     <item>
-      <title>Actuarial Triangles</title>
-      <link>https://blakeshurtz.github.io/portfolio/actuarialtriangles/</link>
+      <title>Storage Migration to the Cloud</title>
+      <link>https://blakeshurtz.github.io/portfolio/db-design/</link>
       <pubDate>Sat, 05 Nov 2016 19:50:47 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/actuarialtriangles/</guid>
-      <description>&lt;p&gt;Forecasting losses for insurance claims using JAGS in R.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/db-design/</guid>
+      <description>&lt;p&gt;From ad hoc data gathering to a secure relational database on AWS&lt;/p&gt;</description>
     </item>
     
     <item>
