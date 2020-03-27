@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Sentiment Analysis with Neural Networks</title>
+<title>Customer Sentiment Analysis using Neural Networks</title>
 <meta name="description" content="Describe your website">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -118,26 +118,74 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>Sentiment Analysis with Neural Networks</h1>
+         <h1>Customer Sentiment Analysis using Neural Networks</h1>
          <p>Language and classification models built with fastai and deployed on Render.</p>
 
-<p>You can try out the classification model on Render <a href="https://prospective-client-classification.onrender.com/">here</a>.</p>
+<hr />
 
-<p>The full details of the project are contained in the nbviewer Jupyter notebook <a href="https://nbviewer.jupyter.org/github/blakeobeans/NLP_sentiment_analysis/blob/master/pb_NLP_model.ipynb">here</a>. GitHub repo <a href="https://github.com/blakeobeans/NLP_sentiment_analysis">here</a>.</p>
+<h4 id="processing-sales-appointments">Processing Sales Appointments</h4>
 
-<p>The goal of this project is to explore the conceptual and programmatic framework for performing NLP classification problems using <a href="https://www.fast.ai/">fastai v3</a>.</p>
+<p>When a new customer contacts our office to set up a sales appointment, a customer service representative asks some basic questions about how we can best serve them.
+Some common questions include how the customer heard about us, what problems or needs they have, where they are in the buying process, etc.
+These answers are typed into our CRM software and are relayed to our sales professonals prior to the appointment date. Here is an example:</p>
 
-<p>For this project, I have amassed my own data set which consists of typed notes provided by a potential customer to a sales professional while scheduling an estimate appointment. The details around the notes include how they heard about us, what they are interested in, etc. The data was joined with a binary indicator of whether a sale was made within the next 60 days.</p>
+<p><em>Cust Interested in ductless mini split for part of home that doesn&rsquo;t get cold enough or hot enough with the existing heat &amp; air.
+Cust in a hurry over the phone, wasn&rsquo;t able to get more info. New customer, found us by Googling &ldquo;ductless split system&rdquo; in Woodland CA. GB1/3/18</em></p>
 
-<p>The data was pulled from an SQL server but could only be exported as a very messy Excel file. Extensive cleaning was required, but this was made easier by using VBA.</p>
+<h4 id="the-project">The Project</h4>
 
-<p>The model was built using Python 3 in Google Colab, which was chosen for its built-in libraries, remote capabilities (so I could work from my home or work PC), free access to GPUs, and Google Drive accessibility.</p>
+<p>The purpose of this research project was to classify the probability that the sales appointment would culminate in work sold.
+This information was used to help the office triage customers during times of excessive demand, decide whether to send a salesperson or service technician, and to help sales professionals calibrate their approach to improve each customer&rsquo;s experience.</p>
 
-<p>I definitely would not have achieved these results without using the <em>transfer learning</em> method promoted by fastai. The idea of starting with a language model that has been pre-trained on the Wikipedia corpus means you can get great results with much less data.</p>
+<h4 id="data-collection">Data Collection</h4>
 
-<p>It&rsquo;s nice to have developed a repeatable workflow for processing text data in the future. The learning rate finder, early stopping, saving after every epoch and freezing and unfreezing layers are important in order to squeeze every percentage point out of the classification model&rsquo;s AUC</p>
+<p>The text for roughly 3000 calls was joined with a binary variable indicating whether a we had had gone into business with the customer within 60 days of the initial sales appointment.</p>
 
-<p><img src="/img/portfolio/ROC.png" alt="caption" /></p>
+<h4 id="model-selection">Model Selection</h4>
+
+<p>Given that the text data contained abbreviated words, mis-spellings and other aspects of the written language that would be difficult for a model to parse, I knew that I would need a state of the art model to analyze this text.</p>
+
+<p>For that reason, I used fast.ai&rsquo;s <a href="http://nlp.fast.ai/classification/2018/05/15/introducing-ulmfit.html">universal language model fine-tuning (ULMFiT)</a>.
+The ULMFiT model is a deep learning neural network designed to be trained on text. What makes the ULMFiT model unique is that it has been pre-trained on <em>a lot</em> of text- <a href="https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/">10 million Wikipedia articles</a> to be precise.
+So by the time it sees my data, it has basically learned English.</p>
+
+<h4 id="model-building">Model Building</h4>
+
+<p>The model was built using the <a href="https://docs.fast.ai/">fastai v1 for PyTorch</a> library in Python 3. The IDE was a <a href="https://nbviewer.jupyter.org/github/blakeobeans/NLP_sentiment_analysis/blob/master/pb_NLP_model.ipynb">Jupyter Notebook that you can view here</a>.
+The IDE was hosted on <a href="https://colab.research.google.com/">Google Colab</a>, which was chosen for its built-in libraries, remote capabilities, free GPUs and direct access to my Google Drive storage.</p>
+
+<p>The model building proceeds in roughly two steps: first, building a language model, and second, building a classification model.</p>
+
+<h5 id="language-model">Language Model</h5>
+
+<p>The purpose of constructing the language model is to expose the pre-trained neural network to the specific vocabulary my dataset.
+The objective function of the language model is to predict the next word in a sentence.
+After tuning the model parameters, the model achieved about 40% accuracy and could even imitate intellegence by completing sentences:</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/3Sn4nYesrBo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<h5 id="classification-model">Classification Model</h5>
+
+<p>The classification model determines, given some text input, the probability that the job will culminate in a sale.</p>
+
+<p>The model was deployed on <a href="https://render.com/">Render</a> and can be seen in the video below:</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/UgkrbZOapeo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<h4 id="results">Results</h4>
+
+<p>After fine-tuning, the model achieved about 79% accuracy on the test data compared to a naive baseline of 61%.
+There were relatively few false negatives (86% specificity) while still performing having better than naive classification for positive results (61% sensitivity).
+Given that there are many other variables that determine whether a sale is a success, perfect prediction is not possible based solely on the data used.
+The model accuracy could be improved by outputting the classification probabilities into an ensemble machine-learning model that accounts for other customer characteristics.</p>
          
       </div>
     </div>
