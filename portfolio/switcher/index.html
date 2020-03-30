@@ -130,7 +130,7 @@ which was used to create energy audit reports and produce proposals for potentia
 
 <p>Having recently completed my undergraduate degree in economics, I was curious as to how the project costs were estimated &ldquo;under the hood&rdquo; based on observable input parameters, such as the SQFT of a building.</p>
 
-<p>I spent Thanksgiving break deriving these production functions, which effectively estimated the <em>productivity</em> for a given installation measure, along with the labor rate per hour, markups, and various capital costs.</p>
+<p>I spent Thanksgiving break deriving these production functions, which effectively contained coefficients reflecting the <em>productivity</em> for a given installation measure, along with the labor rate per hour, markups, and various capital costs.</p>
 
 <p>A few months later, Recurve abandoned their software and left us with an immediate need to find a new software solution.
 I showed my manager the spreadsheet that I had been working on and he encouraged me to &ldquo;run with it&rdquo; with his full support.</p>
@@ -144,24 +144,24 @@ I showed my manager the spreadsheet that I had been working on and he encouraged
 <p>Auditors could use the application to import utility bill data and photos to create <a href="https://github.com/blakeshurtz/Switcher/raw/master/Audit%20Report.pdf">beautiful audit reports</a>.
 Salespeople could input observable features of the building to estimate costs and create <a href="https://github.com/blakeshurtz/Switcher/blob/master/Basic%20Efficiency%20&amp;%20Comfort%20Package.doc?raw=true">proposals and contracts</a>.</p>
 
-<p>Switcher also served as an efficient tool to &ldquo;bridge the gap&rdquo; in communication between sales and install departments by producing project details and checklists for our construction managers, which included product numbers, material quantities and important building features.</p>
+<p>Switcher also served as an efficient tool to &ldquo;bridge the gap&rdquo; in communication between sales and install departments by producing project detail forms and checklists for our construction managers.</p>
 
 <h4 id="under-the-hood">Under the Hood</h4>
 
-<p>Switcher utilized mathematical, logical and indexing-based Excel functions for project pricing. Additionally, Switcher made extensive use of macros in Visual Basic in order to create proposals and audit reports.</p>
+<p>Switcher utilized Excel&rsquo;s mathematical, logical and indexing-based functions for project pricing. Additionally, Switcher made extensive use of macros in Visual Basic in order to create proposals and audit reports.</p>
 
-<p>The proposal exported as a Word document that included pricing and contract language for each line item.</p>
+<p>The proposal macro exported a structured, formatted and emphasized <a href="https://github.com/blakeshurtz/Switcher/blob/master/Basic%20Efficiency%20&amp;%20Comfort%20Package.doc?raw=true">Word document</a> that included contract language and pricing for each line item.</p>
 
-<p>The audit reports (exported as a .pdf) included macros for utility bill disaggregation, widgets to import and resize photos, and charts showing modeled energy-saving effects of various energy-efficiency upgrades.</p>
+<p>The audit report (exported as a <a href="https://github.com/blakeshurtz/Switcher/raw/master/Audit%20Report.pdf">.pdf</a> included macros for utility bill disaggregation, widgets to import and resize photos, and charts showing modeled energy-saving effects of various energy-efficiency upgrades.</p>
 
 <h4 id="ux-gui">UX/GUI</h4>
 
 <p>Switcher was most useful to auditors and salespeople who, uniquely and importantly, were often the same individual.</p>
 
-<p>This fact framed many UX/design decisions, such as choosing to organize each worksheet based on a particular measure and having audit report page inputs side-by-side with pricing inputs on the same worksheet. This streamlined the experience and permitted a simple, accessible GUI.</p>
+<p>This fact framed many UX/design decisions, such as choosing to organize each worksheet around on a particular measure and having audit report page inputs side-by-side with pricing inputs on the same worksheet. This streamlined the experience and permitted a simple, accessible GUI.</p>
 
-<p>For example, the HVAC system&rsquo;s ductwork (an under-rated component for energy efficiency) had its own worksheet where report page parameters such as existing duct leakage could be input along with a pricing calculator for new ductwork.
-The text for the report and proposal could be edited from this same worksheet by clicking a link to open a userform. Also, one could navigate among measures by using a drop-down menu in the bottom left corner.</p>
+<p>For example, the HVAC system&rsquo;s ductwork (an under-rated component for energy efficiency) had its own worksheet with report page parameters such as existing duct leakage along with a pricing calculator for new ductwork.
+The text for the report and proposal could be edited from this same worksheet by clicking a link to open a userform. Also, one could navigate among measures by using a drop-down menu.</p>
 
 <p><img src="/img/portfolio/ductwork.png" alt="This is me" /></p>
 
@@ -169,18 +169,19 @@ The text for the report and proposal could be edited from this same worksheet by
 
 <p>Initially, I had just derived the production functions, but now I was in the unique position of being a data analyst <em>and</em> programmer (along with having field experience).</p>
 
-<p>Combining all three roles, I was able to humbly ask <em>and</em> answer the question- how well did our production functions match actual productivity?</p>
+<p>Combining all three roles, I was able to humbly ask and answer the question- how well did our production functions match actual productivity?</p>
 
 <p>Answering this question would allow us to estimate both the accuracy of our production functions and the actual profit margins for each line-item. The results would effectively model the productive capacity of the firm.</p>
 
-<p>I shared the insights from this research with management. This led to some changes in some pricing parameters to better reflect reality. I also came to understand that each company tells a different story about prices.
+<p>After <a href="https://github.com/blakeshurtz/Switcher/blob/master/AHE%20Hours%20Analysis.docx?raw=true">completing my research</a>, I shared the insights with our company President. This led to some changes in function parameters to better reflect reality. I also came to understand that each company tells a different story about prices.
 While my story was empirical, management&rsquo;s story was about market constraints. In a Hegelian way, both stories were right.</p>
 
 <h4 id="retired">Retired</h4>
 
-<p>I believe that Switcher was a success due to good timing, its cost of internalization relative to market competitors, and our company culture, from the support of management to the willingness of our team adopt it and provide valuable guidance on development.</p>
+<p>I believe that Switcher was a success due to good timing and its cost of internalization relative to market competitors.
+Another factor was our company culture, including the support of management and the willingness of our sales and install teams to adopt it and provide valuable guidance on development.</p>
 
-<p>Before I left the company in 2015, Switcher had also been leased to two other home performance contractors in California. I guess there was a market for it after all!</p>
+<p>Before I left our company in 2015, Switcher had also been leased to two other home performance contractors in California. I guess there was a market for it after all!</p>
 
 <p>Switcher is now retired, as is Advanced Home Energy, so I&rsquo;m sure it&rsquo;s fine to <a href="https://github.com/blakeobeans/website/tree/master/projects/switcher">share it with you.</a></p>
          
