@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blakeshurtz.github.io/portfolio/mixedeffectsanova/</loc>
-    <lastmod>2020-02-07T19:41:01+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blakeshurtz.github.io/portfolio/bayesianbaseball/</loc>
     <lastmod>2016-11-05T19:41:01+05:30</lastmod>
   </url>
@@ -18,7 +13,7 @@
   </url>
   
   <url>
-    <loc>https://blakeshurtz.github.io/portfolio/marketingpipeline/</loc>
+    <loc>https://blakeshurtz.github.io/portfolio/multilevelmarketing/</loc>
     <lastmod>2016-11-05T19:44:32+05:30</lastmod>
   </url>
   
@@ -68,18 +63,6 @@
   </url>
   
   <url>
-    <loc>https://blakeshurtz.github.io/</loc>
-    <lastmod>2020-02-07T19:41:01+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blakeshurtz.github.io/portfolio/</loc>
-    <lastmod>2020-02-07T19:41:01+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://blakeshurtz.github.io/contact/</loc>
     <lastmod>2016-11-06T13:00:25+05:30</lastmod>
   </url>
@@ -87,6 +70,18 @@
   <url>
     <loc>https://blakeshurtz.github.io/about/</loc>
     <lastmod>2016-11-05T21:05:33+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blakeshurtz.github.io/</loc>
+    <lastmod>2016-11-05T20:23:59+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blakeshurtz.github.io/portfolio/</loc>
+    <lastmod>2016-11-05T20:23:59+05:30</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>

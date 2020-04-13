@@ -6,19 +6,10 @@
     <description>Recent content on Blake Shurtz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Feb 2020 19:41:01 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 05 Nov 2016 20:23:59 +0530</lastBuildDate>
     
 	<atom:link href="https://blakeshurtz.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Mixed Effects ANOVA</title>
-      <link>https://blakeshurtz.github.io/portfolio/mixedeffectsanova/</link>
-      <pubDate>Fri, 07 Feb 2020 19:41:01 +0530</pubDate>
-      
-      <guid>https://blakeshurtz.github.io/portfolio/mixedeffectsanova/</guid>
-      <description>&lt;p&gt;Bayesian Workflow using the RStan Ecosystem&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Bayesian Baseball</title>
@@ -39,12 +30,12 @@
     </item>
     
     <item>
-      <title>Sales/Marketing Pipeline</title>
-      <link>https://blakeshurtz.github.io/portfolio/marketingpipeline/</link>
+      <title>Multi-level Marketing</title>
+      <link>https://blakeshurtz.github.io/portfolio/multilevelmarketing/</link>
       <pubDate>Sat, 05 Nov 2016 19:44:32 +0530</pubDate>
       
-      <guid>https://blakeshurtz.github.io/portfolio/marketingpipeline/</guid>
-      <description>&lt;p&gt;Modeling a marketing &amp;amp; sales funnel from source to close.&lt;/p&gt;</description>
+      <guid>https://blakeshurtz.github.io/portfolio/multilevelmarketing/</guid>
+      <description>&lt;p&gt;Modeling the marketplace using the RStan ecosystem.&lt;/p&gt;</description>
     </item>
     
     <item>
