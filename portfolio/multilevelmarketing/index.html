@@ -145,33 +145,31 @@ The purpose of this project is to measure our marketing impact.</p>
 <p>The variables and values included in this example are:</p>
 
 <ul>
-<li><em>close</em>: whether the appointment led to a sale</li>
+<li><em>close</em>: binary indicator for whether the appointment led to a sale</li>
 <li><em>customer_id</em>: the unique customer id</li>
-<li><em>lead_source</em>: radio, tv, newspaper, vehicles or internet<br /></li>
-<li><em>year</em>: year of appointment, 2015-2019</li>
+<li><em>lead_source</em>: radio, TV, newspaper, vehicles or the internet<br /></li>
+<li><em>year</em>: year of appointment, 2015 through 2019</li>
 <li><em>city</em>: Davis, Vacaville, Fairfield, Suisun or Woodland</li>
 <li><em>sales_professional</em>: Peter, Susan, Mary, Steven or John<br /></li>
 <li><em>call_to_estimate</em>: Days between initial call and appointment date<br /></li>
 <li><em>product</em>: Product customer is interested in, 3 types- HVAC, water and solar<br /></li>
-<li><em>n_service</em>: Number of service calls prior to appointment</li>
-<li><em>prior_revenue</em>: Binary indicator for whether the customer has purchased from us in the past</li>
+<li><em>n_service</em>: Number of service calls prior to the sales appointment</li>
+<li><em>prior_revenue</em>: Binary indicator for previous purchase history for customer<br /></li>
 </ul>
 
-<p>The last two variables are indicative of our relationship history with the customer.</p>
-
-<p><em>Note: I&rsquo;ll use the term &ldquo;feature,&rdquo; &ldquo;variable&rdquo; or &ldquo;coefficient&rdquo; to refer to the items above.</em></p>
+<p><em>Note: I&rsquo;ll use the terms &ldquo;feature,&rdquo; &ldquo;variable,&rdquo; &ldquo;indicator&rdquo; and &ldquo;coefficient&rdquo; to refer to the above items.</em></p>
 
 <h4 id="regression-framework">Regression Framework</h4>
 
-<p>The magnitude of each feature can be partitioned and measured by using a regression framework, in particular, a logistic regression.</p>
+<p>The magnitude of the effect of each feature on the probability of a closed sale can be measured, and the variance partitioned, by using a regression framework.</p>
 
 <p>The problem with regression is that, as more variables are added to a model, fewer observations fit into a particular category.
-This sparsity of data tends to lead to a problem in regression known as <strong>over-fitting</strong>.</p>
+This data sparsity tends to lead to a problem in regression known as <strong>over-fitting</strong>.</p>
 
 <p>For example, there may be 50 appointments that resulted from a particular marketing campaign.
-However, there may only be 5 appointments attributed to a particular salesperson in a particular city for a particular year.</p>
+Within this campaign, however, there may only be 5 appointments attributed to a particular combination of features.</p>
 
-<p>Combining a low sample size for a particular subset of features with an exponentially increasing number of subgroups leads to an increased likelihood that some feature effects are over-estimated.</p>
+<p>As more variables are added to the model, low sample sizes for subgroups, class imbalances and an exponentially increasing number of subgroups leads to an increased likelihood that some feature effects are over-estimated.</p>
 
 <h4 id="bayesian-multi-level-models">Bayesian Multi-Level Models</h4>
 
@@ -179,30 +177,29 @@ However, there may only be 5 appointments attributed to a particular salesperson
 
 <p>First, the regression with be executed in a Bayesian framework. <a href="https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations">Weakly informative prior distributions</a>
  will regularize the estimates to within a reasonable range.
-Priors prevent over-estimation by assuming that a marketing campaign would boost sales by 10-20% at most.</p>
+Priors prevent over-estimation by assuming that, for example, a marketing campaign would boost sales by 10-20% at most.</p>
 
 <p>Second, where applicable, the variables will have multi-level structure. A <a href="https://www.youtube.com/watch?v=AALYPv5xSos&amp;list=PLDcUM9US4XdNM4Edgs7weiyIguLSToZRI&amp;index=15">multi-level variable</a>
  <em>partially pools</em> estimates back to their average.
-For example, if there were a strong response to a particular commerical (but only a few observations), the estimate of that response would be reduced to more closely to the average estimate for a radio commercial.</p>
+For example, if there were a strong positive response to a particular radio commercial (but only a few observations), the estimate of that response would be reduced to more closely match the average effect of a radio commercial.</p>
 
 <h4 id="rstan-ecosystem">RStan Ecosystem</h4>
 
 <p>This analysis will be carried out in <a href="https://mc-stan.org/">Stan</a>, an open source probabilistic programming language that utilizes
 <a href="https://chi-feng.github.io/mcmc-demo/app.html?algorithm=HamiltonianMC&amp;target=donut">Hamiltonian Monte Carlo</a> to computationally compute Bayesian integrals over the joint posterior distribution.</p>
 
-<p>The RStan ecosystem includes the following packages:</p>
+<p>The RStan ecosystem, which can be called from the R computing environment, includes the following packages:</p>
 
 <ul>
 <li><a href="http://mc-stan.org/rstan/">RStan</a>- the R interface for executing Stan code and returning results.</li>
-<li><a href="http://mc-stan.org/rstanarm/">RStanARM</a>- A simplified syntax for programming GLMs.</li>
+<li><a href="http://mc-stan.org/rstanarm/">RStanARM</a>- A simplified syntax for programming regression models in Stan.</li>
 <li><a href="https://mc-stan.org/loo/">Loo</a>- A package for measuring and comparing models&rsquo; fit to the data.</li>
 <li><a href="http://mc-stan.org/shinystan/index.html">ShinyStan</a>- An interactive dashboard for sharing your model with others.</li>
 <li><a href="http://mc-stan.org/bayesplot/">Bayesplot</a>- A package for performing inference with posterior distributions.</li>
 </ul>
 
-<p>We&rsquo;ll now proceed through the analysis, in a way that roughly corresponds to the packages above.</p>
-
-<p>To see the entire file executed in an R Notebook, see the script here.</p>
+<p>What follows is an overview of the analysis in a way that roughly corresponds to the packages above.
+To see the entire file executed in an R Notebook, see the <a href="https://blakeshurtz.github.io/multilevel_marketing/">full R notebook here</a>.</p>
 
 <h4 id="model-fitting-with-rstanarm">Model Fitting with RStanARM</h4>
 
@@ -216,10 +213,10 @@ p_{i&hellip;} = \alpha_{i&hellip;} + x \beta \newline
 \sigma_{i&hellip;} = Cauchy(1, 25) \newline
 \end{align}</p>
 
-<p>Where <em>i</em> represents a particular appointment and <strong>…</strong> represents the <em>customer</em>, <em>lead source</em>, <em>year</em>, <em>city</em> and <em>sales professional</em> variables.
-<em>α</em> represents varying intercepts for each combination of groups and <em>β</em> represents an appointment-level coefficient for <em>product</em> and <em>call_to_estimate</em>.</p>
+<p>Where <em>i</em> represents a particular appointment and <strong>…</strong> represents the <em>customer</em>, <em>lead source</em>, <em>year</em>, <em>city</em> and <em>sales professional</em> multi-level variables.
+<em>α</em> represents varying intercepts for each combination of multi-level variables and <em>β</em> represents appointment-level coefficient for <em>product</em> and <em>call_to_estimate</em>.</p>
 
-<p>RStanARM expresses multi-level models in a reduced form using <a href="http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#model-specification">lme4 syntax</a>.</p>
+<p>As shown in the code below, RStanARM expresses multi-level models in a reduced form using <a href="http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#model-specification">lme4 syntax</a>.</p>
 
 <pre><code class="language-r">mlm_sim &lt;- stan_glmer(
         formula = close ~ (1|customer_id) +
@@ -243,34 +240,37 @@ p_{i&hellip;} = \alpha_{i&hellip;} + x \beta \newline
     seed = 1)
 </code></pre>
 
+<p>Regularizing prior distributions were chosen and <a href="https://blakeshurtz.github.io/multilevel_marketing/#004_prior_predictive_simulation">prior predictive distributions</a>
+ were constructed by utilizing the generative features of a Bayesian model.</p>
+
 <h4 id="model-selection-with-loo">Model Selection with Loo</h4>
 
-<p>In order to verify the superiority of the multi-level model, it was compared to a single-level Bayesian regression with identical priors.</p>
+<p>In order to verify the superior goodnees-of-fit of the multi-level model, it was compared to a single-level Bayesian regression with identical priors.</p>
 
 <p>The loo package uses <a href="https://youtu.be/Re-2yVd0Mqk?t=327">leave-one-out cross validation</a> to measure a model&rsquo;s predictive accuracy for a single observation that is excluded from the model.
 It does this for all observations in the dataset.</p>
 
-<p>Both models were compared on their <a href="https://mc-stan.org/loo/reference/loo-glossary.html">expected log pointwise predictive density</a>, and the multi-level model performed better.</p>
+<p>Both models were compared on their <a href="https://mc-stan.org/loo/reference/loo-glossary.html">expected log pointwise predictive density</a>, and <a href="https://blakeshurtz.github.io/multilevel_marketing/#003_loo">the multi-level model performed better</a>.</p>
 
 <h4 id="model-diagnosis-with-shinystan">Model Diagnosis with ShinyStan</h4>
 
 <p>For a number of reasons, models may fail to give accurate results unless they are correctly programmed. <em>How you program the model is part of the model.</em></p>
 
-<p>The easiest way to look &ldquo;under the hood&rdquo; is to do so in <a href="http://mc-stan.org/shinystan/articles/deploy_shinystan.html">ShinyStan</a>, a Shiny app template for a Stan model.</p>
+<p>The easiest way to look &ldquo;under the hood&rdquo; is to do so in ShinyStan, a Shiny app template for a Stan model.</p>
 
-<p>This model passed all diagnostics without any issues and has been uploaded to Shiny <a href="https://blakeobeans.shinyapps.io/Multi-Level-Marketing/">here</a>.</p>
+<p>This model passed all diagnostics without any issues and has been <a href="https://blakeobeans.shinyapps.io/Multi-Level-Marketing/">shared on my Shiny dashboard</a>.</p>
 
 <h4 id="model-inference-with-bayesplot">Model Inference with Bayesplot</h4>
 
-<p>Building the model is only half the job. The results still need to be analyzed!</p>
+<p>Bayesplot makes numeric and graphical model inference easy by providing common functions for <a href="https://mc-stan.org/bayesplot/articles/plotting-mcmc-draws.html">analysis of MCMC draws</a>.</p>
 
-<p>Fortunately, Bayesplot makes this easy by providing common functions for <a href="https://mc-stan.org/bayesplot/articles/plotting-mcmc-draws.html">analysis of MCMC draws</a>.</p>
+<p>It utilizes the <a href="https://ggplot2.tidyverse.org/index.html">ggplot2 graphing library</a>, which allows the analyst to fine tune the plot by adding text, labels, etc.</p>
 
 <p><img src="/img/portfolio/marketing_comparison.png" alt="This is me" /></p>
 
 <h4 id="conclusion">Conclusion</h4>
 
-<p>That&rsquo;s a brief overview of the project. For more information, including producing the prior and posterior predictive distributions, see the <a href="https://blakeshurtz.github.io/multilevel_marketing/">full R notebook here</a>.
+<p>That&rsquo;s a brief overview of the project. For more information, including the prior and posterior predictive distributions, see the <a href="https://blakeshurtz.github.io/multilevel_marketing/">full R notebook here</a>.
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script></p>
