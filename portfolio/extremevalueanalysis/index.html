@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Predicting Building Performance under Extreme Climate Conditions</title>
+<meta name="description" content="Describe your website">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="https://blakeshurtz.github.io/css/owl.theme.css">
+
+
+  <link href="https://blakeshurtz.github.io/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://blakeshurtz.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://blakeshurtz.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+    
+      <p class="sidebar-p">I am a data analyst with 10 years of experience in applying data-driven thinking in a business context.</p>
+    
+      <p class="sidebar-p">This site contains a portfolio of projects I've led that demonstrate best practices in applied statistics and data management.</p>
+    
+      <p class="sidebar-p">Originally from the Bay Area, currently based in Davis, CA.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://blakeshurtz.github.io/portfolio/">Home</a></li>
+      
+        <li><a href="https://blakeshurtz.github.io/about/">About</a></li>
+      
+        <li><a href="https://blakeshurtz.github.io/contact/">Get in touch</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  <a href="https://www.facebook.com/blake.shurtz.5" data-animate-hover="pulse" class="external facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  
+  
+  
+  <a href="https://twitter.com/blakeobeans" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:blakeobeans@gmail.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  <a href="https://www.linkedin.com/in/blakeshurtz/" data-animate-hover="pulse" class="external">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+  <a href="https://stats.stackexchange.com/users/206673/blake-shurtz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-stack-overflow"></i>
+  </a>
+  
+  
+  <a href="https://github.com/blakeshurtz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  <a href="https://www.youtube.com/channel/UCPDv9VWu9TjTmxja-qLEvVA?view_as=subscriber" data-animate-hover="pulse" class="external">
+    <i class="fa fa-youtube"></i>
+  </a>
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2020 Blake Shurtz |
+        
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Predicting Building Performance under Extreme Climate Conditions</h1>
+         <p>Energy-saving building retrofits on the efficient frontier.</p>
+
+<p><em>Thanks to everyone at Greiner, especially the other auditors, who cared enough to help advance the knowledge of building performance.</em></p>
+
+<h4 id="introduction">Introduction</h4>
+
+<p>During my undergraduate education (2006-2009), I majored in <a href="https://en.wikipedia.org/wiki/Environmental_economics">environmental economics</a>. More than once I was challenged with the following question: “Isn’t what’s good for one bad for the other?”</p>
+
+<p>Well, it depends. Of course, there are trade-offs between personal consumption and public goods like clean air. However, <a href="https://en.wikipedia.org/wiki/Kuznets_curve#:~:text=The%20environmental%20Kuznets%20curve%20(EKC)%20is%20a%20hypothesized%20relationship%20between,over%20the%20course%20of%20development.">what’s good for the economy can also be good for the environment (and vice versa)</a>.</p>
+
+<h4 id="energy-efficiency-economics">Energy Efficiency Economics</h4>
+
+<p>In <a href="http://savingenergygrowingjobs.com/">Saving Energy, Growing Jobs</a>, author and economist <a href="https://www.nrdc.org/experts/david-b-goldstein">David Goldstein</a> offers a set of policy proposals around <a href="https://en.wikipedia.org/wiki/Efficient_energy_use">energy efficiency</a> that contradict <a href="https://en.wikipedia.org/wiki/Market_fundamentalism">free-market fundamentalism</a>.</p>
+
+<p>Goldstein chronicles his own research across multiple industries, demonstrating that energy efficiency standards offer a free lunch by incentivising emergent innovative technologies and practices which increase economic growth while reducing energy usage and related negative environmental externalities.</p>
+
+<p>My interest in energy efficiency led to my first full-time job as an energy analyst in the residential construction sector. <a href="https://www.eia.gov/energyexplained/use-of-energy/">21% of US energy use is in residential buildings</a>. It turns out that energy efficient improvements to our homes are a vital part of our nation&rsquo;s energy policy.</p>
+
+<h4 id="designing-on-the-efficient-frontier">Designing on the Efficient Frontier</h4>
+
+<p>Within the residential energy sector, <a href="https://www.eia.gov/energyexplained/use-of-energy/homes.php">62% of residential building energy use is in heating, ventilation and air conditioning (HVAC)</a>.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Climate_of_the_United_States#Pacific_Northwest">West of the Rocky Mountains</a>, here is the recipe for maximizing a building’s climate control efficiency:</p>
+
+<ol>
+<li>Reduce the building’s <a href="https://www.energyvanguard.com/blog/77453/The-3-Types-of-Heating-and-Cooling-Loads">heating and cooling loads</a> as much as possible through shading, insulation, <a href="https://www.energyvanguard.com/blog/56102/The-3-Rules-of-Air-Sealing">air sealing</a>, dual-pane windows, etc.</li>
+<li><a href="https://www.energyvanguard.com/blog/40515/What-Exactly-is-Manual-S-in-HVAC-Design-and-Why-Is-It-Important">Size the HVAC system</a> such that the capacity of the equipment matches the aforementioned heating and cooling loads, whereby a larger system wastes energy and a smaller system wouldn’t be able to maintain the desired indoor temperature.</li>
+<li>Move as much air across the <a href="https://www.lennox.com/buyers-guide/guide-to-hvac/glossary/evaporator-coil">evaporator coil</a> as possible. This minimizes the energy wasted on dehumidification.</li>
+</ol>
+
+<p><img src="/img/portfolio/CFM-efficiency.png" alt="manual s" /></p>
+
+<p>The chart above visualizes this process. At a 95 °F outdoor air temperature, a nominally 3 ton (36 kBTUh) air conditioner provides somewhere between 26 to 32 kBTUh of sensible cooling capacity. This is a close match to the building’s cooling load of 26 kBTUh.</p>
+
+<p>By increasing the airflow across the coil (measured in cubic feet per minute or CFM), energy wasted on dehumidification is reduced and the system’s efficiency is increased by over 15%.</p>
+
+<p>This is Goldstein&rsquo;s free lunch in action: the same equipment, designed to higher standards, yields improvements in comfort and energy efficiency.</p>
+
+<h4 id="a-market-failure">A Market Failure</h4>
+
+<p>Research shows that <a href="https://pdfs.semanticscholar.org/b3cc/87d31eef7abab4849522be8c32bfae7306bb.pdf?_ga=2.207456019.1422701339.1592977330-498279321.1592977330">most HVAC systems in California are over-sized by ½ a ton or more</a>. Not only does this eliminate the 15% efficiency boost, but it substantially degrades equipment durability and indoor air quality.</p>
+
+<p>Wouldn’t an HVAC contractor want to provide the most energy efficient climate control system within the homeowner’s budget constraint? Yes, but paradoxically, they don’t.</p>
+
+<p>So why are HVAC systems typically oversized? There are many reasons: the added cost of a load calculation, the uneven distribution of errors in oversizing vs. undersizing equipment, but the reason I’m going to focus on is more psychological: <em>fear</em>.</p>
+
+<p>Cooling load calculations are meant to estimate equipment performance at extreme outdoor air temperatures of over 100 °F. At these extreme temperatures, will an HVAC contractor really want to put their trust in a computer simulation?</p>
+
+<p><strong>The purpose of this analysis is to show how buildings actually perform under extreme conditions in order to build trust in energy models and confidence in equipment selection.</strong></p>
+
+<h4 id="measured-performance">Measured Performance</h4>
+
+<p>During the summers of 2015 and 2016, data loggers were installed on n = 22 different air conditioner condensers. The data loggers measured the condensers’ amperage every minute for an average study duration of 60 days. Each system went through at least one heatwave where temperatures exceeded 100 °F.</p>
+
+<p>An example of a day’s worth of amperage data for a single system is provided below:</p>
+
+<p><img src="/img/portfolio/runtimes.png" alt="runtimes" /></p>
+
+<p>Based on the amperage of the condenser, the HVAC system’s cooling capacity is inferred using available engineering data.</p>
+
+<p>Using this data, we can infer the building’s cooling load, because the heat energy removed by an air conditioner is equivalent to the cooling needs of the building. Heat out = Heat in.</p>
+
+<p>Then, we can then compare the building&rsquo;s cooling load to its modeled cooling load in order to better understand how cooling load calculations compare to actual system performance.</p>
+
+<h4 id="the-kpi-ccl">The KPI- CCL</h4>
+
+<p>In order to measure the building’s cooling needs relative to the model, I constructed a key performance indicator called the <strong>cyclical cooling load</strong> (CCL).</p>
+
+<p>The crucial aspect of the CCL is that it aggregates data at the system cycle level, where a cycle is defined as a single “off-on-off” event.</p>
+
+<p>Here’s how it works: the minute-by-minute air conditioning cooling capacity is aggregated across the length of the cycle. For example, if a 36 kBTUh air conditioner runs for 15 minutes, then it would provide 8 kBTUh of cooling in that cycle.</p>
+
+<p>In order to compare performance across buildings with varying modeled cooling loads, as well as understanding the building’s performance relative to the modeled cooling load, the aggregated cooling capacity for each cycle is divided by the building&rsquo;s modeled cooling load.</p>
+
+<p>Continuing the example, a cycle that provides 8 kBTUh of cooling in a home that has a 32 kBTUh cooling load would have a CCL of 0.25.
+\begin{align}
+{x}_{jk} = {CCL}_{jk}= \frac{\sum_{i=1}^n y_{ijk}}{z_k}  \newline
+\end{align}</p>
+
+<p>x is the minute-by-minute measurement of the condenser&rsquo;s amperage (and inferred capacity), which is aggregated over all measurements <em>i</em> for each system cycle <em>j</em> and system <em>k</em>, divided by the cooling load of the building <em>k</em>.</p>
+
+<p>For each cycle, the cyclical cooling load has the following interpretation:</p>
+
+<ul>
+<li>CCL &lt; 1 indicates that the building’s cooling needs are less than the modeled cooling load. This is typical for most cycles on most days.</li>
+<li>CCL = 1 indicates that the building’s cooling needs exactly match its modeled cooling load. Another useful interpretation is that, should the system size perfectly match the modeled cooling load, then the system would run for exactly one hour.</li>
+<li>CCL &gt; 1 indicates that the building&rsquo;s cooling load exceeds its modeled cooling load. As the CCL increases above 1, the system is running for an extended period of time and we should begin to worry that the building may not be able to maintain a comfortable indoor temperature.</li>
+</ul>
+
+<h4 id="statistical-extremes">Statistical Extremes</h4>
+
+<p>Over the duration of the study, each climate control system had over 1000 cycles on average, which meant potentially over 1000 measurements of the CCL. We can use this variation to model the probabilities of particularly large CCL’s under extreme heat waves.</p>
+
+<p>In order to estimate the range of possible maxima, we fit a <a href="https://en.wikipedia.org/wiki/Extreme_value_theory">generalized extreme value probability distribution</a> (GEV) to the data. As a subject of statistical investigation, the GEV distribution extends back about 100 years when Fisher and Tippet (1928) demonstrated that regardless of the underlying probability distribution of random variable X, the probability distribution for the last <a href="https://en.wikipedia.org/wiki/Order_statistic">order statistic</a> converges to the GEV distribution.</p>
+
+<h4 id="threshold-selection">Threshold Selection</h4>
+
+<p>There are several methods of fitting a GEV model to data. Given the nature of this data set, I will use the <strong>point over threshold</strong> (POT) method, which keeps all of the data above a threshold (the exceedances, mu) where the expected exceedances beyond the mean (x_i - mu) are linear.</p>
+
+<p><img src="/img/portfolio/threshold_selection.jpeg" alt="runtimes" /></p>
+
+<p>The <strong>mean residual life plot</strong> visualizes the linearity beyond the threshold. A unique threshold was chosen for each system.</p>
+
+<h4 id="probability-distribution">Probability Distribution</h4>
+
+<p>The tail behavior of the exceedances are modeled using the <a href="https://en.wikipedia.org/wiki/Generalized_Pareto_distribution">Generalized Pareto distribution</a>.</p>
+
+<p>\begin{align}
+f(X|\mu, k, \sigma) = \frac{1}{\sigma}(1 + k \frac{x-\mu}{\sigma})^{-(1/k + 1)} \newline
+\end{align}</p>
+
+<h4 id="probability-model">Probability Model</h4>
+
+<p>The probability model is coded in <a href="https://mc-stan.org/">Stan</a>. As Stan does not contain functions for the generalized pareto distribution, the log-likelihood probability density (derived below) is included in the function block:</p>
+
+<p>\begin{align}
+f(X|\mu, k, \sigma) = \frac{1}{\sigma}(1 + k \frac{x-\mu}{\sigma})^{-(1/k + 1)} \newline
+\end{align}</p>
+
+<p>\begin{align}
+-(\frac{1}{k}+1) *ln(\frac{1}{\sigma}(1+k\frac{x-\mu}{\sigma})) \newline
+-(\frac{1}{k}+1) * ln(\sigma^{-1})+{log1p}(k\frac{x-\mu}{\sigma}) \newline
+L=-(\frac{1}{k}+1) \sum_{i=1}^n ln(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
+\end{align}</p>
+
+<p>Because there are multiple buildings to be modeled, the model block incorporates a <a href="https://mc-stan.org/docs/2_23/stan-users-guide/ragged-data-structs-section.html">ragged data structure</a> and runs on a for-loop.</p>
+
+<h4 id="results-individual-effects-model">Results - Individual Effects Model</h4>
+
+<p>The <strong>individual effects model</strong> measures the parameters and probability distributions for each of the 22 systems.</p>
+
+<p>There are several ways to characterize any probability distribution depending on the research question of interest. What we want to know is the probability of getting a CCL as extreme as X or greater. Given this framing of the question, it makes sense to examine the <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function#Complementary_cumulative_distribution_function_(tail_distribution)">complementary cumulative distribution function</a> (CCDF), an inverse of the cumulative distribution function where higher values have lower, right-tail probabilities.</p>
+
+<p><img src="/img/portfolio/indv_plot.jpeg" alt="indv_effects" /></p>
+
+<p>The blue lines in the plot above represent the CCDF for each system, and the red points are the exceedances.</p>
+
+<p>The models clearly fit the data well. Customer_04 has a concave curve indicating a number of high CCLs. For this particular customer, the generalized pareto distribution converged to a Weilbull distribution.</p>
+
+<h4 id="results-multilevel-model">Results- Multilevel Model</h4>
+
+<p>In addition to the probability models for each of the 22 systems, I also fit a <strong>multi-level model</strong> in order to estimate the probabilities associated with the average system.</p>
+
+<p>This is done by taking a Bayesian approach which assumes that each of the parameters for all of the systems have their own shared Gaussian prior distributions. The parameters of these prior distributions, the <strong>hyperparameters</strong>, represent the quantity of interest, namely, the average parameter across all possible systems.</p>
+
+<p>The CCDF for the multi-level model is below.</p>
+
+<p><img src="/img/portfolio/mlm_plot.jpeg" alt="mlm_plot" /></p>
+
+<p>The grey lines represent 1000 posterior parameter draws as CCDFs. The blue line represents the posterior mean for each of the parameters. The red lines represent the 2.5% and 97.5% probability interval for the posterior.</p>
+
+<p>The key results from the study are as follows:</p>
+
+<blockquote>
+<p>The median CCL is .52 (.22, .86).</p>
+</blockquote>
+
+<p>This means that the median exceedance roughly maps to half of the modeled cooling load. In other words, during heat waves, a rightly-sized system will run for a half hour at a time.</p>
+
+<blockquote>
+<p>A CCL of 1 or greater occurs with 29% of the exceedances (.07, .46)</p>
+</blockquote>
+
+<p>During heat waves, a system will run for an hour or more on 29% of the cycles.</p>
+
+<blockquote>
+<p>95% of the CCL’s are less than or equal to 3.23 (1.01, 7.73).</p>
+</blockquote>
+
+<p>In other words, the average system which is sized to match its cooling load will run for 3.2 hours under the most extreme conditions.</p>
+
+<h4 id="building-performance">Building Performance</h4>
+
+<p>Several customers with rightly-sized systems had their indoor temperatures monitored to ensure that their home maintained temperatures during heat waves.</p>
+
+<p><img src="/img/portfolio/indoortemps.png" alt="indoor temps" /></p>
+
+<p>We can see that this system maintained 74-75 degree Fahrenheit indoor temps (the specified design temperature) on the hottest days of the year.</p>
+
+<h4 id="post-script">Post-Script</h4>
+
+<p>I feel like this is a project only I could have done. It combines energy efficiency, building performance and rigorous data analysis and statistical modeling.</p>
+
+<p>Data collection took a number of years and I did not begin the analysis until after completing my MS degree.</p>
+
+<p>Working with this vast amount of engineering data also required gaining functional programming experience in R, including writing functions and executing those functions within a loop.</p>
+
+<p>This is my first attempt at writing native Stan code. This took some time, as the script included function and transformed parameter blocks, ragged data structures in the model block and manipulating posterior samples within R. Fortunately, the theoretical and intuitive understanding of Bayesian statistics guided me through the statistical programming.</p>
+
+<h4 id="works-cited">Works Cited</h4>
+
+<p>Coles, S (2001). &ldquo;An Introduction to Statistical Modeling of Extreme Values.&rdquo; Springer Series in Statistics. Springer Verlag London.</p>
+
+<p>Ribatet, Mathieu. &ldquo;The POT Package: An R Package to Model Peaks Over a Threshold.&rdquo; <a href="http://pot.r-forge.r-project.org/">http://pot.r-forge.r-project.org/</a></p>
+
+<p>Vehtari, Aki. &ldquo;Extreme value analysis and user defined probability functions in Stan.&rdquo; <a href="https://mc-stan.org/users/documentation/case-studies/gpareto_functions.html">https://mc-stan.org/users/documentation/case-studies/gpareto_functions.html</a></p>
+
+<p>GitHub repo <a href="https://github.com/blakeshurtz/AC_runtime_project">here</a>.</p>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://blakeshurtz.github.io/js/jquery.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/bootstrap.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/jquery.cookie.js"> </script>
+<script src="https://blakeshurtz.github.io/js/ekko-lightbox.js"></script>
+<script src="https://blakeshurtz.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/masonry.pkgd.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/owl.carousel.min.js"></script>
+<script src="https://blakeshurtz.github.io/js/front.js"></script>
+
+
+
+</body>
+</html>
