@@ -163,12 +163,12 @@
 
 <p>Yet, research shows that <a href="https://pdfs.semanticscholar.org/b3cc/87d31eef7abab4849522be8c32bfae7306bb.pdf?_ga=2.207456019.1422701339.1592977330-498279321.1592977330">most HVAC systems in California are over-sized by a 25% or more</a> relative to their modeled cooling load calculation. Not only does this eliminate the 15% efficiency boost, but it substantially degrades equipment durability and indoor air quality.</p>
 
-<p>So why are HVAC systems typically oversized? There are many reasons, but the reason I’m going to focus the most fundamental: <em>trust</em>. Simply put, many HVAC contractors do not trust their own cooling load calculations.</p>
+<p>So why are HVAC systems typically oversized? There are many reasons, but the reason I’m going to focus the most fundamental: <em>fear of being wrong</em>. Simply put, many HVAC contractors do not trust their own cooling load calculations.</p>
 
 <p>It&rsquo;s easy to understand why. Cooling load calculations are meant to simulate a building&rsquo;s cooling needs at extreme outdoor air temperatures of over 100 °F. At these extreme temperatures, will an HVAC contractor really want to put their trust in a computer simulation?</p>
 
 <blockquote>
-<p>The purpose of this analysis is to show how buildings actually perform under extreme outdoor air temperatures in order to verify the accuracy of energy models thereby building confidence in HVAC system sizing, improving building energy-efficiency and moving society to a more sustainable energy future.</p>
+<p>The purpose of this analysis is to show how buildings actually perform under extreme outdoor air temperatures in order to build confidence in HVAC system sizing, thereby improving building energy-efficiency and moving society to a more sustainable energy future.</p>
 </blockquote>
 
 <h4 id="measured-performance">Measured Performance</h4>
@@ -185,7 +185,7 @@
 
 <p>Then, we can then compare the building&rsquo;s actual cooling load to its modeled cooling load in order to better understand how cooling load calculations compare to actual system performance.</p>
 
-<h4 id="the-kpi-ccl">The KPI- CCL</h4>
+<h4 id="cyclical-cooling-loads">Cyclical Cooling Loads</h4>
 
 <p>In order to measure the building’s cooling needs relative to the model, I constructed a key performance indicator called the <strong>cyclical cooling load</strong> (CCL).</p>
 
@@ -228,7 +228,7 @@ f(X|\mu, k, \sigma) = \frac{1}{\sigma}(1 + k \frac{x-\mu}{\sigma})^{-(1/k + 1)} 
 
 <h4 id="probability-model">Probability Model</h4>
 
-<p>The probability model is coded in <a href="https://mc-stan.org/">Stan</a>. As Stan does not contain functions for the generalized pareto distribution, the log-likelihood probability density (derived below) is included in the function block:</p>
+<p>The probability model is coded in <a href="https://mc-stan.org/">Stan</a>. As Stan does not contain functions for the generalized pareto distribution, the log-likelihood probability density (derived below) is included in the <a href="https://github.com/blakeshurtz/AC_runtime_project/blob/master/scripts/stan-models/individual-effects.stan">function block</a>:</p>
 
 <p>\begin{align}
 f(X|\mu, k, \sigma) = \frac{1}{\sigma}(1 + k \frac{x-\mu}{\sigma})^{-(1/k + 1)} \newline
@@ -246,13 +246,13 @@ L=-(\frac{1}{k}+1) \sum_{i=1}^n log1p(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
 
 <p>The <strong>individual effects model</strong> measures the parameters and probability distributions for each of the 22 systems.</p>
 
-<p>There are several ways to characterize any probability distribution depending on the research question of interest. What we want to know is the probability of getting a CCL as extreme as X or greater. Given this framing of the question, it makes sense to examine the <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function#Complementary_cumulative_distribution_function_(tail_distribution)">complementary cumulative distribution function</a> (CCDF), an inverse of the cumulative distribution function where higher values of X heave decreasing probabilities.</p>
-
-<p><img src="/img/portfolio/indv_plot.jpeg" alt="indv_effects" /></p>
+<p>There are several ways to characterize any probability distribution depending on the research question of interest. What we want to know is the probability of getting a CCL as extreme as X or greater. Given this framing of the question, it makes sense to examine the <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function#Complementary_cumulative_distribution_function_(tail_distribution)">complementary cumulative distribution function</a> (CCDF), an inverse of the cumulative distribution function where higher values of X have decreasing probabilities.</p>
 
 <p>The blue lines in the plot above represent the CCDF for each system, and the red points are the exceedances.</p>
 
-<p>The models clearly fit the data well. There is a lot of variation in threshold performance: most systems have a maximum CCL at around 4 or 5, but some systems have lesser and some have greater.</p>
+<p><img src="/img/portfolio/indv_plot.jpeg" alt="indv_effects" /></p>
+
+<p>The models clearly fit the data well, although there is some funky behavior at the tail end. There is a lot of variation in threshold performance: most systems have a maximum CCL at around 4 or 5, but some systems have lesser and some have greater.</p>
 
 <h4 id="multilevel-model">Multilevel Model</h4>
 
@@ -269,10 +269,10 @@ L=-(\frac{1}{k}+1) \sum_{i=1}^n log1p(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
 <p>The key results from the study are as follows:</p>
 
 <blockquote>
-<p>95% of the CCL’s are less than or equal to 3.23 (1.01, 7.73).</p>
+<p>95% of the CCL&rsquo;s are less thatn 3.24 (1.02, 7.55) and 99% of the CCL’s are less than 6.63 (1.65, 20.20).</p>
 </blockquote>
 
-<p>Most importantly, the average system which is sized to match its cooling load will run for 3.2 hours under the most extreme conditions.</p>
+<p>Most importantly, the average system which is sized to match its cooling load will run for 6.54 hours under the most extreme conditions.</p>
 
 <blockquote>
 <p>The median CCL is .52 (.22, .86).</p>
