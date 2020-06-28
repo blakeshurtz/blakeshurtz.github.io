@@ -141,9 +141,9 @@
 
 <h4 id="designing-on-the-efficient-frontier">Designing on the Efficient Frontier</h4>
 
-<p>Within the residential energy sector, <a href="https://www.eia.gov/energyexplained/use-of-energy/homes.php">62% of residential building energy use is in heating, ventilation and air conditioning (HVAC)</a>. The way to minimize this portion of building energy usage is through energy-efficient engineering design.</p>
+<p>Within the residential energy sector, <a href="https://www.eia.gov/energyexplained/use-of-energy/homes.php">62% of residential building energy use is in heating, ventilation and air conditioning (HVAC)</a>. The way to minimize this portion of building energy usage is through <a href="https://www.gti.energy/wp-content/uploads/2018/10/Best-Practices-Guide-v2Complete-lo-res-11-30-2012.pdf">energy-efficient engineering design.</a></p>
 
-<p><a href="https://en.wikipedia.org/wiki/Climate_of_the_United_States#Pacific_Northwest">West of the Rocky Mountains</a>, here is the recipe for maximizing a building’s climate control efficiency:</p>
+<p><a href="https://en.wikipedia.org/wiki/Climate_of_the_United_States#Pacific_Northwest">West of the Rocky Mountains</a>, here is the basic recipe for maximizing a building’s HVAC efficiency:</p>
 
 <ol>
 <li>Reduce the building’s <a href="https://www.energyvanguard.com/blog/77453/The-3-Types-of-Heating-and-Cooling-Loads">heating and cooling loads</a> as much as possible through shading, insulation, <a href="https://www.energyvanguard.com/blog/56102/The-3-Rules-of-Air-Sealing">air sealing</a>, dual-pane windows, etc.</li>
@@ -161,64 +161,66 @@
 
 <p>The process seems simple enough: a contractor performs a cooling load calculation (typically in energy modeling software) which tells them what size air conditioner to install in order adequately cool the building while maintaining equipment efficiency.</p>
 
-<p>Yet, research shows that <a href="https://pdfs.semanticscholar.org/b3cc/87d31eef7abab4849522be8c32bfae7306bb.pdf?_ga=2.207456019.1422701339.1592977330-498279321.1592977330">most HVAC systems in California are over-sized by a 25% or more</a> relative to their modeled cooling load calculation. Not only does this eliminate the 15% efficiency boost, but it substantially degrades equipment durability and indoor air quality.</p>
+<p>Yet research shows that <a href="https://pdfs.semanticscholar.org/b3cc/87d31eef7abab4849522be8c32bfae7306bb.pdf?_ga=2.207456019.1422701339.1592977330-498279321.1592977330">most HVAC systems in California are over-sized by a 25% or more</a> relative to their modeled cooling load calculation. Not only does this eliminate the 15% efficiency boost, but it substantially degrades equipment durability and indoor air quality.</p>
 
-<p>So why are HVAC systems typically oversized? There are many reasons, but the reason I’m going to focus the most fundamental: <em>fear of being wrong</em>. Simply put, many HVAC contractors do not trust their own cooling load calculations.</p>
+<p>So why are HVAC systems typically oversized? There are many reasons, but fundamental explanation is that contractors are simply afraid of putting in equipment that will fail to cool the house during extreme heat waves.</p>
 
-<p>It&rsquo;s easy to understand why. Cooling load calculations are meant to simulate a building&rsquo;s cooling needs at extreme outdoor air temperatures of over 100 °F. At these extreme temperatures, will an HVAC contractor really want to put their trust in a computer simulation?</p>
+<p>It&rsquo;s easy to understand why contractors do not perform or abide by their load calculations. Cooling load calculations are meant to simulate a building&rsquo;s cooling needs at extreme outdoor air temperatures of over 100 °F. At these extreme temperatures, will an HVAC contractor really want to put their trust in a computer simulation?</p>
 
 <blockquote>
-<p>The purpose of this analysis is to show how buildings actually perform under extreme outdoor air temperatures in order to build confidence in HVAC system sizing, thereby improving building energy-efficiency and moving society to a more sustainable energy future.</p>
+<p>The purpose of this analysis is to show how buildings actually perform under extreme outdoor air temperatures in order to build confidence in the HVAC system sizing process, thereby improving building energy-efficiency and moving society to a more sustainable energy future.</p>
 </blockquote>
 
 <h4 id="measured-performance">Measured Performance</h4>
 
 <p>During the summers of 2015 and 2016, data loggers were installed on n = 22 different air conditioner condensers. The data loggers measured the condensers’ amperage every minute for an average study duration of 60 days. Each system went through at least one heatwave where temperatures exceeded 100 °F.</p>
 
-<p>An example of a day’s worth of amperage data for a single system is provided below:</p>
+<p>A visualization of a day’s worth of amperage data for a single two-stage system is provided below:</p>
 
 <p><img src="/img/portfolio/runtimes.png" alt="runtimes" /></p>
 
 <p>Based on the amperage of the condenser, the HVAC system’s cooling capacity is inferred using <a href="https://github.com/blakeshurtz/AC_runtime_project/blob/master/Equipment%20Capacity/manual_s.xlsx?raw=true">available engineering data</a>.</p>
 
-<p>Using this data, we can infer the building’s actual cooling load (as apposed to the modeled cooling load) because the heat energy removed by an air conditioner is equivalent to the cooling needs of the building. Heat out = Heat in.</p>
+<p>Using this data, we can measure the building’s actual cooling load (as apposed to the modeled cooling load) because the heat energy removed by an air conditioner is equivalent to the cooling needs of the building.</p>
 
-<p>Then, we can then compare the building&rsquo;s actual cooling load to its modeled cooling load in order to better understand how cooling load calculations compare to actual system performance.</p>
+<p>Then, we can then compare the building&rsquo;s actual cooling load to its modeled cooling load in order to better understand how buildings actually perform relative to their modeled cooling load.</p>
 
 <h4 id="cyclical-cooling-loads">Cyclical Cooling Loads</h4>
 
-<p>In order to measure the building’s cooling needs relative to the model, I constructed a key performance indicator called the <strong>cyclical cooling load</strong> (CCL).</p>
+<p>In order to measure each building’s actual cooling needs relative to its model, I constructed a key performance indicator called the <strong>cyclical cooling load</strong> (CCL).</p>
 
-<p>The crucial aspect of the CCL is that it aggregates data at the system cycle level, where a cycle is defined as a single “off-on-off” event.</p>
+<p>The crucial aspect of the CCL is that it aggregates data at the <strong>system cycle</strong> level, where a cycle is defined as a single system “off-on-off” event.</p>
 
-<p>Here’s how it works: the minute-by-minute air conditioning cooling capacity is aggregated across the length of the cycle. For example, if a 36 kBTUh air conditioner runs for 15 minutes, then it would provide 8 kBTUh of cooling in that cycle.</p>
+<p>Here’s how it works: for each building, the minute-by-minute cooling capacity is aggregated across the length of the cycle. For example, if a 36 kBTUh air conditioner runs for 15 minutes, then it would provide 8 kBTUh of cooling in that cycle.</p>
 
-<p>In order to compare performance across buildings with varying modeled cooling loads, as well as understanding the building’s performance relative to the modeled cooling load, the aggregated cooling capacity for each cycle is divided by the building&rsquo;s modeled cooling load.</p>
+<p>The aggregated cooling capacity for each cycle is then divided by the building&rsquo;s modeled cooling load. This allows us to understand each building’s performance relative to its modeled cooling load while also applying a common scale across the 22 buildings in the study.</p>
 
 <p>Continuing the example, a cycle that provides 8 kBTUh of cooling in a home that has a 32 kBTUh cooling load would have a CCL of 0.25.
 \begin{align}
 {x}_{jk} = {CCL}_{jk}= \frac{\sum_{i=1}^n y_{ijk}}{z_k}  \newline
 \end{align}</p>
 
-<p><em>y</em> is the minute-by-minute measurement of the condenser&rsquo;s amperage (and inferred capacity), which is aggregated over all measurements <em>i</em> for each system cycle <em>j</em> and system <em>k</em>, divided by the modeled cooling load <em>z</em> of building <em>k</em>.</p>
+<p><em>y</em> is the minute-by-minute measurement of the condenser&rsquo;s capacity, which is aggregated over all measurements <em>i</em> for each system cycle <em>j</em> and system <em>k</em>, which is then divided by the modeled cooling load <em>z</em> of building <em>k</em>.</p>
 
 <p>For each cycle, the cyclical cooling load has the following interpretation:</p>
 
 <ul>
 <li>CCL &lt; 1 indicates that the building’s cooling needs are less than the modeled cooling load. This is typical for most cycles on most days.</li>
-<li>CCL = 1 indicates that the building’s cooling needs exactly match its modeled cooling load. Another useful interpretation is that, should the system size perfectly match the modeled cooling load, then the system (a &ldquo;rightly-sized system&rdquo;) would run for exactly one hour.</li>
-<li>CCL &gt; 1 indicates that the building&rsquo;s cooling load exceeds its modeled cooling load. As the CCL increases above 1, the system is running for over an hour and we should begin to worry that the building may not be able to maintain a comfortable indoor temperature.</li>
+<li>CCL = 1 indicates that the building’s cooling needs exactly match its modeled cooling load. Should the installed system capacity match the modeled cooling load, then the system (a &ldquo;rightly-sized system&rdquo;) would run for exactly one hour.</li>
+<li>CCL &gt; 1 indicates that the building&rsquo;s cooling load exceeds its modeled cooling load and that a rightly sized air conditioner is running for over an hour.</li>
 </ul>
 
 <p>Re-framed in this way, we can ask, &ldquo;What size CCL can we expect under extreme conditions?&rdquo;</p>
 
-<h4 id="statistical-extremes">Statistical Extremes</h4>
+<h4 id="the-generalized-extreme-value-distribution">The Generalized Extreme Value Distribution</h4>
 
 <p>Over the duration of the study, each climate control system had over 1000 cycles on average, which meant potentially over 1000 measurements of the CCL.</p>
 
-<p>We can use this variation to refine our question and ask, &ldquo;With what probability can we expect a CCL of size x?&rdquo; Or, alternatively, &ldquo;What is the highest CCL that will occur 5% of the time or less?&rdquo;</p>
+<blockquote>
+<p>For each system, we can use the variation in CCL values to refine our question and ask, &ldquo;With what probability can we expect a CCL of size x?&rdquo; Or, alternatively, &ldquo;What value CCL occurs 1% of the time or less?&rdquo;</p>
+</blockquote>
 
-<p>In order to answer these questions, I fit a <a href="https://en.wikipedia.org/wiki/Extreme_value_theory">generalized extreme value probability distribution</a> (GEV) to the data. The GEV distribution extends back to 1928 when Fisher and Tippet demonstrated that regardless of the underlying probability distribution of random variable X, the probability distribution for the last <a href="https://en.wikipedia.org/wiki/Order_statistic">order statistic</a> converges to the GEV distribution.</p>
+<p>In order to answer these questions, I fit a <a href="https://en.wikipedia.org/wiki/Extreme_value_theory">Generalized Extreme Value distribution</a> (GEV) to the data. The GEV distribution extends back to 1928 when Fisher and Tippet demonstrated that regardless of the underlying probability distribution of the random variable X, the probability distribution for the last <a href="https://en.wikipedia.org/wiki/Order_statistic">order statistic</a> converges to the GEV distribution.</p>
 
 <p>There are several methods of fitting a GEV model to data. Given the nature of this data set, the tail behavior of the exceedances are modeled using the <a href="https://en.wikipedia.org/wiki/Generalized_Pareto_distribution">Generalized Pareto distribution</a>.</p>
 
@@ -226,9 +228,11 @@
 f(X|\mu, k, \sigma) = \frac{1}{\sigma}(1 + k \frac{x-\mu}{\sigma})^{-(1/k + 1)} \newline
 \end{align}</p>
 
+<p>For each of the 22 buildings, the model solves for the location parameter <em>k</em> and the scale parameter <em>sigma</em>, while the threshold parameter <em>mu</em> is estimated from the data by studying the <a href="https://github.com/blakeshurtz/AC_runtime_project/blob/master/plots/threshold_selection.jpeg">linearity of the exceedences.</a></p>
+
 <h4 id="probability-model">Probability Model</h4>
 
-<p>The probability model is coded in <a href="https://mc-stan.org/">Stan</a>. As Stan does not contain functions for the Generalized Pareto Distribution, the log-likelihood probability density (derived below) is included in the <a href="https://github.com/blakeshurtz/AC_runtime_project/blob/master/scripts/stan-models/individual-effects.stan">function block</a>:</p>
+<p>The probability model is coded in <a href="https://mc-stan.org/">Stan</a>. As Stan does not contain built-in functions for the Generalized Pareto Distribution, the log-likelihood probability density (derived below) is included in the <a href="https://github.com/blakeshurtz/AC_runtime_project/blob/master/scripts/stan-models/individual-effects.stan">function block</a>:</p>
 
 <p>\begin{align}
 f(X|\mu, k, \sigma) = \frac{1}{\sigma}(1 + k \frac{x-\mu}{\sigma})^{-(1/k + 1)} \newline
@@ -248,23 +252,25 @@ L=-(\frac{1}{k}+1) \sum_{i=1}^n log1p(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
 
 <p>There are several ways to characterize any probability distribution depending on the research question of interest. What we want to know is the probability of getting a CCL as extreme as X or greater. Given this framing of the question, it makes sense to examine the <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function#Complementary_cumulative_distribution_function_(tail_distribution)">complementary cumulative distribution function</a> (CCDF), an inverse of the cumulative distribution function where higher values of X have decreasing probabilities.</p>
 
-<p>The blue lines in the plot above represent the modeled CCDF for each system, and the red points are the exceedances (ie. the data). The models clearly fit the data well, even at the 1% tail.</p>
+<p>The blue lines in the plots below represent the modeled CCDF for each system and the red points are the exceedances (ie. the data). The models clearly fit the data well, even at the 1% probability threshold.</p>
 
 <p><img src="/img/portfolio/indv_plot.jpeg" alt="indv_effects" /></p>
 
-<p>There is a lot of variation in threshold performance: most systems have a maximum CCL at around 4 or 5, but some systems have lesser and some have greater maximums.</p>
+<p>Despite the accurate model fit for each building, there is still variation in the CCL across buildings. Many buildings have a 1% threshold CCL of 3 or 4, while others extend to 10 or more!</p>
 
-<p>This variation encompasses the variation in in-field performance, including how systems are sized relative to the building&rsquo;s cooling needs, HVAC efficiency and design, as well as thermostat settings/homeowner operation.</p>
+<p>The between building variation encompasses the variation in in-field performance, including HVAC efficiency and design, as well as thermostat settings and homeowner operation.</p>
 
 <h4 id="multilevel-model">Multilevel Model</h4>
 
-<p>What we really want to know are the probabilities associated with the average system- not just the 22 in my sample, but all possible systems. In order to estimate these singular parameters, I fit a <strong>multi-level model</strong> to the data.</p>
+<p>What we really want to know is the performance of the average system across all possible systems. In order to estimate these singular parameters, I fit a <a href="https://elevanth.org/blog/2017/08/24/multilevel-regression-as-default/">multi-level model</a> to the data.</p>
 
-<p>This is done by taking a Bayesian approach which assumes that each of the parameters for the individual systems have their own shared Gaussian prior distributions. The parameters of these prior distributions, the <strong>hyperparameters</strong>, represent the quantity of interest, namely, the average parameter across all possible systems.</p>
+<p>A Bayesian multi-level model assumes that each of the parameters for the individual systems have their own shared Gaussian prior distribution. The parameters of these prior distributions, the <strong>hyperparameters</strong>, represent the quantity of interest, namely, the average parameter across all possible systems.</p>
 
-<p>The CCDF for the multi-level model is below (I recommend opening the image in a separate tab for a higher resolution). The colored lines represent different quantiles for the parameters&rsquo; samples and the points are the actual data for all 22 buildings.</p>
+<p>The CCDF for the multi-level model is below. The colored lines represent different quantiles for the parameters&rsquo; samples and the points are the actual data for all buildings.</p>
 
 <p><img src="/img/portfolio/mlm_plot.jpeg" alt="mlm_plot" /></p>
+
+<p>We can see that the CCDF for the mean cuts roughly down the middle of the data although it is pulled to the right by the large outliers to the degree of frequency with which the outliers occur.</p>
 
 <p>The key results from the study are as follows (with 50% probability intervals):</p>
 
@@ -290,7 +296,7 @@ L=-(\frac{1}{k}+1) \sum_{i=1}^n log1p(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
 
 <h4 id="building-performance">Building Performance</h4>
 
-<p>Several customers with rightly-sized systems had their indoor temperatures monitored to ensure that their home maintained temperatures during heat waves.</p>
+<p>Several customers with rightly-sized systems had their indoor air temperatures monitored to ensure that their home maintained a comfortable temperature during heat waves.</p>
 
 <p><img src="/img/portfolio/indoortemps.png" alt="indoor temps" /></p>
 
