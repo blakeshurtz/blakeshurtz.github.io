@@ -228,7 +228,7 @@ f(X|\mu, k, \sigma) = \frac{1}{\sigma}(1 + k \frac{x-\mu}{\sigma})^{-(1/k + 1)} 
 
 <h4 id="probability-model">Probability Model</h4>
 
-<p>The probability model is coded in <a href="https://mc-stan.org/">Stan</a>. As Stan does not contain functions for the generalized pareto distribution, the log-likelihood probability density (derived below) is included in the <a href="https://github.com/blakeshurtz/AC_runtime_project/blob/master/scripts/stan-models/individual-effects.stan">function block</a>:</p>
+<p>The probability model is coded in <a href="https://mc-stan.org/">Stan</a>. As Stan does not contain functions for the Generalized Pareto Distribution, the log-likelihood probability density (derived below) is included in the <a href="https://github.com/blakeshurtz/AC_runtime_project/blob/master/scripts/stan-models/individual-effects.stan">function block</a>:</p>
 
 <p>\begin{align}
 f(X|\mu, k, \sigma) = \frac{1}{\sigma}(1 + k \frac{x-\mu}{\sigma})^{-(1/k + 1)} \newline
@@ -262,7 +262,7 @@ L=-(\frac{1}{k}+1) \sum_{i=1}^n log1p(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
 
 <p>This is done by taking a Bayesian approach which assumes that each of the parameters for the individual systems have their own shared Gaussian prior distributions. The parameters of these prior distributions, the <strong>hyperparameters</strong>, represent the quantity of interest, namely, the average parameter across all possible systems.</p>
 
-<p>The CCDF for the multi-level model is below.</p>
+<p>The CCDF for the multi-level model is below (I recommend opening the image in a separate tab for a higher resolution). The colored lines represent different quantiles for the parameters&rsquo; samples and the points are the actual data for all 22 buildings.</p>
 
 <p><img src="/img/portfolio/mlm_plot.jpeg" alt="mlm_plot" /></p>
 
