@@ -244,17 +244,17 @@ L=-(\frac{1}{k}+1) \sum_{i=1}^n log1p(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
 
 <h4 id="individual-effects-model">Individual Effects Model</h4>
 
-<p>The <strong>individual effects model</strong> measures the parameters and probability distributions for each of the 22 systems.</p>
+<p>The <strong>individual effects model</strong> measures the parameters and probability distributions for each of the 22 buildings.</p>
 
 <p>There are several ways to characterize any probability distribution depending on the research question of interest. What we want to know is the probability of getting a CCL as extreme as X or greater. Given this framing of the question, it makes sense to examine the <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function#Complementary_cumulative_distribution_function_(tail_distribution)">complementary cumulative distribution function</a> (CCDF), an inverse of the cumulative distribution function where higher values of X have decreasing probabilities.</p>
 
-<p>The blue lines in the plot above represent the CCDF for each system, and the red points are the exceedances. The models clearly fit the data well.</p>
+<p>The blue lines in the plot above represent the modeled CCDF for each system, and the red points are the exceedances (ie. the data). The models clearly fit the data well, even at the 1% tail.</p>
 
 <p><img src="/img/portfolio/indv_plot.jpeg" alt="indv_effects" /></p>
 
-<p>There is a lot of variation in threshold performance: most systems have a maximum CCL at around 4 or 5, but some systems have lesser and some have greater.</p>
+<p>There is a lot of variation in threshold performance: most systems have a maximum CCL at around 4 or 5, but some systems have lesser and some have greater maximums.</p>
 
-<p>This variation encompasses the variation in in-field performance, including how systems are sized relative to the building&rsquo;s cooling needs, HVAC efficiency and design, as well as home-owner operation.</p>
+<p>This variation encompasses the variation in in-field performance, including how systems are sized relative to the building&rsquo;s cooling needs, HVAC efficiency and design, as well as thermostat settings/homeowner operation.</p>
 
 <h4 id="multilevel-model">Multilevel Model</h4>
 
