@@ -248,11 +248,13 @@ L=-(\frac{1}{k}+1) \sum_{i=1}^n log1p(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
 
 <p>There are several ways to characterize any probability distribution depending on the research question of interest. What we want to know is the probability of getting a CCL as extreme as X or greater. Given this framing of the question, it makes sense to examine the <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function#Complementary_cumulative_distribution_function_(tail_distribution)">complementary cumulative distribution function</a> (CCDF), an inverse of the cumulative distribution function where higher values of X have decreasing probabilities.</p>
 
-<p>The blue lines in the plot above represent the CCDF for each system, and the red points are the exceedances.</p>
+<p>The blue lines in the plot above represent the CCDF for each system, and the red points are the exceedances. The models clearly fit the data well.</p>
 
 <p><img src="/img/portfolio/indv_plot.jpeg" alt="indv_effects" /></p>
 
-<p>The models clearly fit the data well, although there is some funky behavior at the tail end. There is a lot of variation in threshold performance: most systems have a maximum CCL at around 4 or 5, but some systems have lesser and some have greater.</p>
+<p>There is a lot of variation in threshold performance: most systems have a maximum CCL at around 4 or 5, but some systems have lesser and some have greater.</p>
+
+<p>This variation encompasses the variation in in-field performance, including how systems are sized relative to the building&rsquo;s cooling needs, HVAC efficiency and design, as well as home-owner operation.</p>
 
 <h4 id="multilevel-model">Multilevel Model</h4>
 
@@ -264,25 +266,25 @@ L=-(\frac{1}{k}+1) \sum_{i=1}^n log1p(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
 
 <p><img src="/img/portfolio/mlm_plot.jpeg" alt="mlm_plot" /></p>
 
-<p>The key results from the study are as follows:</p>
+<p>The key results from the study are as follows (with 50% probability intervals):</p>
 
 <blockquote>
-<p>95% of the CCL&rsquo;s are less than 3.2 (1.0, 7.6) and 99% of the CCL’s are less than 6.6 (1.7, 20.2).</p>
+<p>95% of the CCL&rsquo;s are less than 2.88 (2.17, 3.74) and 99% of the CCL’s are less than 5.47 (3.86, 7.57).</p>
 </blockquote>
 
-<p>Most importantly, the average system which is sized to match its cooling load will run for 6.54 hours under the most extreme conditions.</p>
+<p>Most importantly, the average system which is sized to match its cooling load will run for 5.47 hours under the most extreme conditions.</p>
 
 <blockquote>
-<p>The median CCL is .52 (.22, .86).</p>
+<p>The median CCL is 0.50 (0.41, 0.60).</p>
 </blockquote>
 
 <p>This means that the median exceedance roughly maps to half of the modeled cooling load. In other words, during heat waves, a rightly-sized system will run for a half hour at a time.</p>
 
 <blockquote>
-<p>A CCL of 1 or greater occurs with 29% of the exceedances (.07, .46)</p>
+<p>A CCL of 1 or greater occurs with 28% of the exceedances (.21, .34)</p>
 </blockquote>
 
-<p>During heat waves, a system will run for an hour or more on 29% of the cycles.</p>
+<p>During heat waves, a system will run for an hour or more on 28% of the cycles.</p>
 
 <p>With these expectations in mind, a contractor can confidently understand how their system will perform under extreme weather conditions when it is accurately sized for the building.</p>
 
