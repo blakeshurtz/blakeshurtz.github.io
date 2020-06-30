@@ -129,7 +129,7 @@
 
 <p>During my undergraduate education (2006-2009), I majored in <a href="https://en.wikipedia.org/wiki/Environmental_economics">environmental economics</a>. More than once I was challenged with the following question: <a href="https://en.wikipedia.org/wiki/Market_fundamentalism">“Isn’t what’s good for one bad for the other?”</a></p>
 
-<p>Well, it depends. There are trade-offs between personal consumption and public goods like clean air. However, <a href="https://en.wikipedia.org/wiki/Kuznets_curve#:~:text=The%20environmental%20Kuznets%20curve%20(EKC)%20is%20a%20hypothesized%20relationship%20between,over%20the%20course%20of%20development.">what’s good for the economy can also be good for the environment (and vice versa)</a>.</p>
+<p>Well, it depends. There are trade-offs between personal consumption and public goods like clean air. However, <a href="https://en.wikipedia.org/wiki/Kuznets_curve#:~:text=The%20environmental%20Kuznets%20curve%20(EKC)%20is%20a%20hypothesized%20relationship%20between,over%20the%20course%20of%20development.">what’s good for the economy can also be good for the environment.</a>.</p>
 
 <h4 id="energy-efficiency">Energy Efficiency</h4>
 
@@ -145,7 +145,7 @@
 
 <ol>
 <li>Reduce the building’s <a href="https://www.energyvanguard.com/blog/77453/The-3-Types-of-Heating-and-Cooling-Loads">heating and cooling loads</a> as much as possible through shading, insulation, <a href="https://www.energyvanguard.com/blog/56102/The-3-Rules-of-Air-Sealing">air sealing</a>, dual-pane windows, etc.</li>
-<li>Size the air conditioning system according to the building&rsquo;s <a href="https://www.energyvanguard.com/blog/40515/What-Exactly-is-Manual-S-in-HVAC-Design-and-Why-Is-It-Important">cooling load calculation</a> <em>whereby a smaller system would fail to maintain the desired indoor air temperature during a heat wave.</em></li>
+<li>Size the air conditioning system according to the building&rsquo;s <a href="https://www.energyvanguard.com/blog/40515/What-Exactly-is-Manual-S-in-HVAC-Design-and-Why-Is-It-Important">cooling load calculation</a> whereby a smaller system would fail to maintain the desired indoor air temperature during a heat wave.</li>
 <li>Blast as many cubic feet of air (CFM) across the <a href="https://www.lennox.com/buyers-guide/guide-to-hvac/glossary/evaporator-coil">evaporator coil</a> as possible, which minimizes the energy wasted on dehumidification.</li>
 </ol>
 
@@ -155,9 +155,9 @@
 
 <p>This is Goldstein&rsquo;s free lunch in action: the same equipment, designed to higher standards, yields improvements in comfort and energy efficiency.</p>
 
-<h4 id="a-market-failure">A Market Failure</h4>
+<h4 id="market-failure">Market Failure</h4>
 
-<p>The process seems simple enough: a contractor performs a cooling load calculation (typically in energy modeling software) which tells them what size air conditioner to install in order adequately cool the building while maintaining equipment efficiency.</p>
+<p>The process seems simple enough: a contractor performs a cooling load calculation (typically in energy modeling software) which tells them what size air conditioner to install in order to maximize equipment efficiency while maintaining the desired indoor air temperature.</p>
 
 <p>Yet research shows that <a href="https://pdfs.semanticscholar.org/b3cc/87d31eef7abab4849522be8c32bfae7306bb.pdf?_ga=2.207456019.1422701339.1592977330-498279321.1592977330">most HVAC systems in California are over-sized by a 25% or more</a> relative to their modeled cooling load calculation. Not only does this eliminate the 15% efficiency boost, but it substantially degrades equipment durability and indoor air quality.</p>
 
@@ -191,9 +191,9 @@
 
 <p>Here’s how it works: for each cycle, the minute-by-minute cooling capacity is aggregated. For example, if a 36 kBTUh air conditioner runs for 15 minutes, then it would provide 8 kBTUh of cooling in that cycle.</p>
 
-<p>The cyclical cooling capacity is then divided by the building&rsquo;s modeled cooling load. This allows us to understand each building’s performance relative to its model while also standardizing the KPI across the disparate buildings in the study.</p>
+<p>The cyclical cooling capacity is then divided by the building&rsquo;s modeled cooling load. This allows us to understand each building’s performance relative to its model while also standardizing the CCL across the disparate buildings in the study.</p>
 
-<p>Continuing the example, a cycle that provides 8 kBTUh of cooling in a building with a 32 kBTUh cooling load would have a CCL of 0.25. The formula for the CCL is below:
+<p>Continuing the example, a cycle that provides 8 kBTUh of cooling in a building with a 32 kBTUh cooling load will have a CCL of 0.25. The formula for the CCL is below:
 \begin{align}
 {x}_{jk} = {CCL}_{jk}= \frac{\sum_{i=1}^n y_{ijk}}{z_k}  \newline
 \end{align}</p>
@@ -242,11 +242,11 @@ f(X|\mu, k, \sigma) = \frac{1}{\sigma}(1 + k \frac{x-\mu}{\sigma})^{-(1/k + 1)} 
 L=-(\frac{1}{k}+1) \sum_{i=1}^n log1p(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
 \end{align}</p>
 
-<p>Because there are multiple buildings to be modeled, the model block incorporates a <a href="https://mc-stan.org/docs/2_23/stan-users-guide/ragged-data-structs-section.html">ragged data structure</a> and runs on a for-loop.</p>
+<p>Because there are multiple buildings to be modeled, the model block incorporates a <a href="https://mc-stan.org/docs/2_23/stan-users-guide/ragged-data-structs-section.html">ragged data structure</a> and runs in a for-loop.</p>
 
 <h4 id="individual-effects-model">Individual Effects Model</h4>
 
-<p>There are several ways to characterize any probability distribution depending on the research question of interest. What we want to know is the probability of getting a CCL as extreme as X or greater. Given this framing of the question, it makes sense to examine the <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function#Complementary_cumulative_distribution_function_(tail_distribution)">complementary cumulative distribution function</a> (CCDF), an inverse of the cumulative distribution function where higher values of X have decreasing probabilities.</p>
+<p>There are several ways to characterize any probability distribution depending on the research question of interest. What we want to know is the probability of getting a CCL as extreme as X or greater. Given this framing of the research question, it makes sense to examine the <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function#Complementary_cumulative_distribution_function_(tail_distribution)">complementary cumulative distribution function</a> (CCDF), an inverse of the cumulative distribution function where higher values of X have decreasing probabilities.</p>
 
 <p>The <a href="https://github.com/blakeshurtz/AC_runtime_project/blob/master/scripts/stan-models/individual-effects.stan">individual effects model</a> fits a separate CCDF (the blue curve) for each of the 22 systems. The models clearly fit the data well, even at the 1% probability threshold.</p>
 
@@ -262,7 +262,7 @@ L=-(\frac{1}{k}+1) \sum_{i=1}^n log1p(\frac{k}{\sigma}(x-\mu)) -N*ln(\sigma)
 
 <p>A <a href="https://elevanth.org/blog/2017/08/24/multilevel-regression-as-default/">Bayesian multi-level model</a> assumes that each of the parameters for the individual buildings have their own shared Gaussian prior distributions. The parameters of these prior distributions, which are themselves random variables, represent the quantites of interest.</p>
 
-<p>The CCDF for the multi-level model is below. The colored lines represent different quantiles on the parameters&rsquo; posterior distributions while the points are the data for all buildings. (I recommend opening the image in a new tab for a higher resolution view.)</p>
+<p>The CCDF for the multi-level model is below. The colored lines represent different quantiles on the parameters&rsquo; posterior distributions while the points are the data for all of the buildings in the study. (I recommend opening the image in a new window for a higher resolution view.)</p>
 
 <p><img src="/img/portfolio/mlm_plot.jpeg" alt="mlm_plot" /></p>
 
