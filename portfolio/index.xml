@@ -1,141 +1,110 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Portfolios on Blake Shurtz</title>
     <link>https://blakeshurtz.github.io/portfolio/</link>
     <description>Recent content in Portfolios on Blake Shurtz</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 05 Nov 2016 20:23:59 +0530</lastBuildDate>
-    
-	<atom:link href="https://blakeshurtz.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://blakeshurtz.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bayesian Baseball</title>
       <link>https://blakeshurtz.github.io/portfolio/bayesianbaseball/</link>
       <pubDate>Sat, 05 Nov 2016 19:41:01 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/bayesianbaseball/</guid>
       <description>&lt;p&gt;Masters project presented at the 2019 Joint Statistical Meetings&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Customer Sentiment Analytics with Neural Networks</title>
       <link>https://blakeshurtz.github.io/portfolio/nlp/</link>
       <pubDate>Sat, 05 Nov 2016 19:41:01 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/nlp/</guid>
       <description>&lt;p&gt;Language and classification models built with fastai and deployed on Render.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Predicting Building Performance under Extreme Climate Conditions</title>
       <link>https://blakeshurtz.github.io/portfolio/extremevalueanalysis/</link>
       <pubDate>Sat, 05 Nov 2016 19:41:01 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/extremevalueanalysis/</guid>
       <description>&lt;p&gt;Energy-saving building retrofits on the efficient frontier.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Multi-level Marketing</title>
       <link>https://blakeshurtz.github.io/portfolio/multilevelmarketing/</link>
       <pubDate>Sat, 05 Nov 2016 19:44:32 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/multilevelmarketing/</guid>
       <description>&lt;p&gt;Modeling the marketplace using the RStan ecosystem.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Storage Migration to the Cloud</title>
       <link>https://blakeshurtz.github.io/portfolio/db-design/</link>
       <pubDate>Sat, 05 Nov 2016 19:50:47 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/db-design/</guid>
       <description>&lt;p&gt;From ad hoc data collection to a secure relational database on AWS&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Switcher</title>
       <link>https://blakeshurtz.github.io/portfolio/switcher/</link>
       <pubDate>Sat, 05 Nov 2016 19:53:42 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/switcher/</guid>
       <description>&lt;p&gt;Excel + VBA application for project cost estimation and contract creation.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ML Workflow for R</title>
       <link>https://blakeshurtz.github.io/portfolio/mlcaret/</link>
       <pubDate>Sat, 05 Nov 2016 19:56:17 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/mlcaret/</guid>
       <description>&lt;p&gt;Quickly find the best ML Model Using Caret&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Speedy ML</title>
       <link>https://blakeshurtz.github.io/portfolio/speedyml/</link>
       <pubDate>Sat, 05 Nov 2016 19:57:40 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/speedyml/</guid>
       <description>&lt;p&gt;10x your ML models using AWS databases and an EC2 instance.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Modeling Contagion with Markov Chains</title>
       <link>https://blakeshurtz.github.io/portfolio/contagionmarkov/</link>
       <pubDate>Sat, 05 Nov 2016 19:59:22 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/contagionmarkov/</guid>
-      <description>&lt;p&gt;Is it rational to quarantine sick kids?&lt;/p&gt;</description>
+      <description>&lt;p&gt;Is it rational to quarantine sick kids? typo&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Modeling sampling variability using a nested experimental design</title>
       <link>https://blakeshurtz.github.io/portfolio/shinystan/</link>
       <pubDate>Sat, 05 Nov 2016 20:02:19 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/shinystan/</guid>
       <description>&lt;p&gt;A model for airflow quantity using multiple measurement tools and diagnostic procedures&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Negative Binomial Model for Predicting Service Calls</title>
       <link>https://blakeshurtz.github.io/portfolio/servicecalls/</link>
       <pubDate>Sat, 05 Nov 2016 20:22:08 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/servicecalls/</guid>
       <description>&lt;p&gt;It is a truism in the HVAC industry that hotter weather in the 90’s, 100’s and beyond is good for business.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Bike City</title>
       <link>https://blakeshurtz.github.io/portfolio/bikecity/</link>
       <pubDate>Sat, 05 Nov 2016 20:23:59 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/bikecity/</guid>
       <description>&lt;p&gt;A shinydashboard showing real-time bike usage across San Francisco.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Presenting Data in the Human Environment</title>
       <link>https://blakeshurtz.github.io/portfolio/humanenvironment/</link>
       <pubDate>Sat, 05 Nov 2016 20:23:59 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/humanenvironment/</guid>
       <description>&lt;p&gt;I argue that there are a range of human environments for interpreting data and that any presentation of results should be crafted around this context.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>An Exploratory Investigation of University of California Admissions</title>
       <link>https://blakeshurtz.github.io/portfolio/ucadmissions/</link>
       <pubDate>Sat, 05 Nov 2016 18:25:22 +0530</pubDate>
-      
       <guid>https://blakeshurtz.github.io/portfolio/ucadmissions/</guid>
       <description>&lt;p&gt;Admissions locally and globally, and the effect on competition.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -29,7 +29,6 @@
 <link href="https://blakeshurtz.github.io/css/custom.css" rel="stylesheet">
 <link rel="shortcut icon" href="https://blakeshurtz.github.io/img/favicon.png">
 
-
 </head>
 <body>
   <div id="all">
@@ -37,7 +36,7 @@
           <div class="row row-offcanvas row-offcanvas-left">
               <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
   <div class="sidebar-content">
-    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io/">Blake Shurtz</a></h1>
     
       <p class="sidebar-p">I am a data analyst with 10 years of experience in applying data-driven thinking in a business context.</p>
     
@@ -114,7 +113,7 @@
 <div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
   <div class="small-navbar visible-xs">
   <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
-  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io/">Blake Shurtz</a></h1>
 </div>
 
   <div class="row">
@@ -122,48 +121,35 @@
       <div class="content-column-content">
          <h1>ML Workflow for R</h1>
          <p>Quickly find the best ML Model Using Caret</p>
-
 <p>Github <a href="https://github.com/blakeobeans/Speedy-ML">here</a>. A typical starting workflow might be broken out below.</p>
-
-<pre><code class="language-r">source('scripts/wrangling/ETL.r') #ETL
-source('scripts/wrangling/wrangle.r') #wrangle
-source('scripts/wrangling/missing_data.r') #impute 
-source('scripts/pre-processing/00. transform.r') #normalize 
-source('scripts/pre-processing/01. dummyvars.r') #one hot encode
-source('scripts/pre-processing/03. nzv.r') #remove near zero variance predictors
-source('scripts/pre-processing/04. correlated predictors.r') #drop highly correlated predictors
-source('scripts/pre-processing/05. partitioning.r') #partition data
-</code></pre>
-
-<p>Caret allows for consistent syntax in building models from multiple packages. Caret covers about <a href="https://topepo.github.io/caret/available-models.html">250 different ML models</a>, including those using H20.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/wrangling/ETL.r&#39;</span>) <span style="color:#75715e">#ETL</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/wrangling/wrangle.r&#39;</span>) <span style="color:#75715e">#wrangle</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/wrangling/missing_data.r&#39;</span>) <span style="color:#75715e">#impute </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/pre-processing/00. transform.r&#39;</span>) <span style="color:#75715e">#normalize </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/pre-processing/01. dummyvars.r&#39;</span>) <span style="color:#75715e">#one hot encode</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/pre-processing/03. nzv.r&#39;</span>) <span style="color:#75715e">#remove near zero variance predictors</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/pre-processing/04. correlated predictors.r&#39;</span>) <span style="color:#75715e">#drop highly correlated predictors</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/pre-processing/05. partitioning.r&#39;</span>) <span style="color:#75715e">#partition data</span>
+</span></span></code></pre></div><p>Caret allows for consistent syntax in building models from multiple packages. Caret covers about <a href="https://topepo.github.io/caret/available-models.html">250 different ML models</a>, including those using H20.</p>
 <p>Simply set some automated training parameters&hellip;</p>
-
-<pre><code class="language-r">ctrl &lt;- trainControl(method = &quot;repeatedcv&quot;, 
-                     number = 10, #10-fold cross validation 
-                     repeats = 5, #repeated
-                     search = &quot;random&quot;,
-                     classProbs = TRUE,
-                     summaryFunction = twoClassSummary,
-                     sampling = &quot;smote&quot;)
-</code></pre>
-
-<p>&hellip;and execute! The model below is a random forest model.</p>
-
-<pre><code class="language-r">rfTune &lt;- train(y ~ ., 
-                data=dfTrain,
-                method = &quot;ranger&quot;,
-                preProc = c(&quot;center&quot;, &quot;scale&quot;, &quot;BoxCox&quot;), 
-                tuneLength = 50,
-                trControl = ctrl,
-                metric = &quot;ROC&quot;)
-</code></pre>
-
-<p>Some of the more complicated models may require a grid search object to be passed to the tuneGrid method in the <em>train()</em> function.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>ctrl <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">trainControl</span>(method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;repeatedcv&#34;</span>, 
+</span></span><span style="display:flex;"><span>                     number <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, <span style="color:#75715e">#10-fold cross validation </span>
+</span></span><span style="display:flex;"><span>                     repeats <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>, <span style="color:#75715e">#repeated</span>
+</span></span><span style="display:flex;"><span>                     search <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;random&#34;</span>,
+</span></span><span style="display:flex;"><span>                     classProbs <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>,
+</span></span><span style="display:flex;"><span>                     summaryFunction <span style="color:#f92672">=</span> twoClassSummary,
+</span></span><span style="display:flex;"><span>                     sampling <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;smote&#34;</span>)
+</span></span></code></pre></div><p>&hellip;and execute! The model below is a random forest model.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>rfTune <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">train</span>(y <span style="color:#f92672">~</span> ., 
+</span></span><span style="display:flex;"><span>                data<span style="color:#f92672">=</span>dfTrain,
+</span></span><span style="display:flex;"><span>                method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ranger&#34;</span>,
+</span></span><span style="display:flex;"><span>                preProc <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;center&#34;</span>, <span style="color:#e6db74">&#34;scale&#34;</span>, <span style="color:#e6db74">&#34;BoxCox&#34;</span>), 
+</span></span><span style="display:flex;"><span>                tuneLength <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>,
+</span></span><span style="display:flex;"><span>                trControl <span style="color:#f92672">=</span> ctrl,
+</span></span><span style="display:flex;"><span>                metric <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ROC&#34;</span>)
+</span></span></code></pre></div><p>Some of the more complicated models may require a grid search object to be passed to the tuneGrid method in the <em>train()</em> function.</p>
 <p>There are a number of other analytic functions to performed on model objects, including tuning the model&rsquo;s hyperparameters and updating predictions using Caret&rsquo;s <em>update()</em> function.
-<img src="/img/portfolio/Rplot01.png" alt="initialstate" /></p>
-
+<img src="/img/portfolio/Rplot01.png" alt="initialstate"></p>
 <p>This visualization of some dynamic features of an XGBoost model measure the accuracy for a varied combination of boosting iterations (ie. resampling data) and lower-weight nodes. Lower instance weight fits the data better but fewer nodes may suggest overfitting at this extreme margin of accuracy.</p>
          
       </div>

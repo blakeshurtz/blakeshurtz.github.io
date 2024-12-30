@@ -29,7 +29,6 @@
 <link href="https://blakeshurtz.github.io/css/custom.css" rel="stylesheet">
 <link rel="shortcut icon" href="https://blakeshurtz.github.io/img/favicon.png">
 
-
 </head>
 <body>
   <div id="all">
@@ -37,7 +36,7 @@
           <div class="row row-offcanvas row-offcanvas-left">
               <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
   <div class="sidebar-content">
-    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io/">Blake Shurtz</a></h1>
     
       <p class="sidebar-p">I am a data analyst with 10 years of experience in applying data-driven thinking in a business context.</p>
     
@@ -114,7 +113,7 @@
 <div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
   <div class="small-navbar visible-xs">
   <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
-  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io/">Blake Shurtz</a></h1>
 </div>
 
   <div class="row">
@@ -122,74 +121,52 @@
       <div class="content-column-content">
          <h1>Multi-level Marketing</h1>
          <p>Modeling the marketplace using the RStan ecosystem.</p>
-
 <p><em>Author&rsquo;s note: The data in this post has been 100% simulated, <a href="https://blakeshurtz.github.io/multilevel_marketing/">see the code here</a>.</em></p>
-
 <h4 id="our-market">Our Market</h4>
-
 <p>Customers come to us from different places, at different times, for different reasons.
 We do not control the market, however, it is incumbent on us to know our market to the fullest extent possible.
 This means knowing our customers, our relationship with them over time, and our broader reach in the community.
 The purpose of this project is to measure our marketing impact.</p>
-
 <ul>
-<li>What is the effect of our marketing campaigns?<br /></li>
-<li>How well do our salespeople connect?<br /></li>
-<li>How much does our relationship history matter?<br /></li>
+<li>What is the effect of our marketing campaigns?</li>
+<li>How well do our salespeople connect?</li>
+<li>How much does our relationship history matter?</li>
 </ul>
-
 <h4 id="research-design">Research Design</h4>
-
 <p>The outcome of interest- whether a customer chooses to work with us- exists at the appointment level, ie., did a particular sales call result in a closed deal?</p>
-
 <p>The variables and values included in this example are:</p>
-
 <ul>
 <li><em>close</em>: binary indicator for whether the appointment led to a sale</li>
 <li><em>customer_id</em>: the unique customer id</li>
-<li><em>lead_source</em>: radio, TV, newspaper, vehicles or the internet<br /></li>
+<li><em>lead_source</em>: radio, TV, newspaper, vehicles or the internet</li>
 <li><em>year</em>: year of appointment, 2015 through 2019</li>
 <li><em>city</em>: Davis, Vacaville, Fairfield, Suisun or Woodland</li>
-<li><em>sales_professional</em>: Peter, Susan, Mary, Steven or John<br /></li>
-<li><em>call_to_estimate</em>: Days between initial call and appointment date<br /></li>
-<li><em>product</em>: Product customer is interested in, 3 types- HVAC, water and solar<br /></li>
+<li><em>sales_professional</em>: Peter, Susan, Mary, Steven or John</li>
+<li><em>call_to_estimate</em>: Days between initial call and appointment date</li>
+<li><em>product</em>: Product customer is interested in, 3 types- HVAC, water and solar</li>
 <li><em>n_service</em>: Number of service calls prior to the sales appointment</li>
-<li><em>prior_revenue</em>: Binary indicator for previous purchase history for customer<br /></li>
+<li><em>prior_revenue</em>: Binary indicator for previous purchase history for customer</li>
 </ul>
-
 <p><em>Note: I&rsquo;ll use the terms &ldquo;feature,&rdquo; &ldquo;variable,&rdquo; &ldquo;indicator&rdquo; and &ldquo;coefficient&rdquo; to refer to the above items.</em></p>
-
 <h4 id="regression-framework">Regression Framework</h4>
-
 <p>The magnitude of the effect of each feature on the probability of a closed sale can be measured, and the variance partitioned, by using a regression framework.</p>
-
 <p>The problem with regression is that, as more variables are added to a model, fewer observations fit into a particular category.
 This data sparsity tends to lead to a problem in regression known as <strong>over-fitting</strong>.</p>
-
 <p>For example, there may be 50 appointments that resulted from a particular marketing campaign.
 Within this campaign, however, there may only be 5 appointments attributed to a particular combination of features.</p>
-
 <p>As more variables are added to the model, low sample sizes for subgroups, class imbalances and an exponentially increasing number of subgroups leads to an increased likelihood that some feature effects are over-estimated.</p>
-
 <h4 id="bayesian-multi-level-models">Bayesian Multi-Level Models</h4>
-
 <p>In order to improve the estimates of the model coefficients, two additional modifications to the traditional logistic regression will be made.</p>
-
 <p>First, the regression with be executed in a Bayesian framework. <a href="https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations">Weakly informative prior distributions</a>
- will regularize the estimates to within a reasonable range.
+will regularize the estimates to within a reasonable range.
 Priors prevent over-estimation by assuming that, for example, a marketing campaign would boost sales by 10-20% at most.</p>
-
 <p>Second, where applicable, the variables will have multi-level structure. A <a href="https://www.youtube.com/watch?v=AALYPv5xSos&amp;list=PLDcUM9US4XdNM4Edgs7weiyIguLSToZRI&amp;index=15">multi-level variable</a>
- <em>partially pools</em> estimates back to their average.
+<em>partially pools</em> estimates back to their average.
 For example, if there were a strong positive response to a particular radio commercial (but only a few observations), the estimate of that response would be reduced to more closely match the average effect of a radio commercial.</p>
-
 <h4 id="rstan-ecosystem">RStan Ecosystem</h4>
-
 <p>This analysis will be carried out in <a href="https://mc-stan.org/">Stan</a>, an open source probabilistic programming language that utilizes
 <a href="https://chi-feng.github.io/mcmc-demo/app.html?algorithm=HamiltonianMC&amp;target=donut">Hamiltonian Monte Carlo</a> to computationally compute Bayesian integrals over the joint posterior distribution.</p>
-
 <p>The RStan ecosystem, which can be called from the R computing environment, includes the following packages:</p>
-
 <ul>
 <li><a href="http://mc-stan.org/rstan/">RStan</a>- the R interface for executing Stan code and returning results.</li>
 <li><a href="http://mc-stan.org/rstanarm/">RStanARM</a>- A simplified syntax for programming regression models in Stan.</li>
@@ -197,14 +174,10 @@ For example, if there were a strong positive response to a particular radio comm
 <li><a href="http://mc-stan.org/shinystan/index.html">ShinyStan</a>- An interactive dashboard for sharing your model with others.</li>
 <li><a href="http://mc-stan.org/bayesplot/">Bayesplot</a>- A package for performing inference with posterior distributions.</li>
 </ul>
-
 <p>What follows is an overview of the analysis in a way that roughly corresponds to the packages above.
 To see the entire file executed in an R Notebook, see the <a href="https://blakeshurtz.github.io/multilevel_marketing/">full R notebook here</a>.</p>
-
 <h4 id="model-fitting-with-rstanarm">Model Fitting with RStanARM</h4>
-
 <p>The full model can be expressed in the following form:</p>
-
 <p>\begin{align}
 L_i = Binomial(1, logit^{-1}[p_{i&hellip;}]) \newline
 p_{i&hellip;} = \alpha_{i&hellip;} + x \beta \newline
@@ -212,68 +185,48 @@ p_{i&hellip;} = \alpha_{i&hellip;} + x \beta \newline
 \beta = Cauchy(0, 2.5) \newline
 \sigma_{i&hellip;} = Cauchy(1, 25) \newline
 \end{align}</p>
-
 <p>Where <em>i</em> represents a particular appointment and <strong>…</strong> represents the <em>customer</em>, <em>lead source</em>, <em>year</em>, <em>city</em> and <em>sales professional</em> multi-level variables.
 <em>α</em> represents varying intercepts for each combination of multi-level variables and <em>β</em> represents appointment-level coefficient for <em>product</em> and <em>call_to_estimate</em>.</p>
-
 <p>As shown in the code below, RStanARM expresses multi-level models in a reduced form using <a href="http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#model-specification">lme4 syntax</a>.</p>
-
-<pre><code class="language-r">mlm_sim &lt;- stan_glmer(
-        formula = close ~ (1|customer_id) +
-                          (1|lead_source) +
-                          (1|year) +
-                          (1|city) +
-                          (1|sales_professional) +
-                          product +
-                          n_service +
-                          prior_revenue +
-                          call_to_estimate - 1, 
-    prior = normal(location = 0, scale = 1, autoscale = FALSE),
-    prior_intercept = cauchy(location = 0, scale = 2.5, autoscale = FALSE),
-    prior_aux = cauchy(location = 0, scale = 25, autoscale = FALSE),
-    data = dat,
-    family = binomial,
-    cores = 3,
-    chains = 4,
-    iter = 1000,
-    warmup = 150,
-    seed = 1)
-</code></pre>
-
-<p>Regularizing prior distributions were chosen and <a href="https://blakeshurtz.github.io/multilevel_marketing/#004_prior_predictive_simulation">prior predictive distributions</a>
- were constructed by utilizing the generative features of a Bayesian model.</p>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>mlm_sim <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">stan_glmer</span>(
+</span></span><span style="display:flex;"><span>		formula <span style="color:#f92672">=</span> close <span style="color:#f92672">~</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>customer_id) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>						  (<span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>lead_source) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>						  (<span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>year) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>						  (<span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>city) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>						  (<span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>sales_professional) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>						  product <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>						  n_service <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>						  prior_revenue <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>						  call_to_estimate <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, 
+</span></span><span style="display:flex;"><span>    prior <span style="color:#f92672">=</span> <span style="color:#a6e22e">normal</span>(location <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, scale <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, autoscale <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>),
+</span></span><span style="display:flex;"><span>    prior_intercept <span style="color:#f92672">=</span> <span style="color:#a6e22e">cauchy</span>(location <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, scale <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.5</span>, autoscale <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>),
+</span></span><span style="display:flex;"><span>    prior_aux <span style="color:#f92672">=</span> <span style="color:#a6e22e">cauchy</span>(location <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, scale <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>, autoscale <span style="color:#f92672">=</span> <span style="color:#66d9ef">FALSE</span>),
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> dat,
+</span></span><span style="display:flex;"><span>    family <span style="color:#f92672">=</span> binomial,
+</span></span><span style="display:flex;"><span>    cores <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    chains <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>,
+</span></span><span style="display:flex;"><span>    iter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>,
+</span></span><span style="display:flex;"><span>    warmup <span style="color:#f92672">=</span> <span style="color:#ae81ff">150</span>,
+</span></span><span style="display:flex;"><span>    seed <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><p>Regularizing prior distributions were chosen and <a href="https://blakeshurtz.github.io/multilevel_marketing/#004_prior_predictive_simulation">prior predictive distributions</a>
+were constructed by utilizing the generative features of a Bayesian model.</p>
 <h4 id="model-selection-with-loo">Model Selection with Loo</h4>
-
 <p>In order to verify the superior goodnees-of-fit of the multi-level model, it was compared to a single-level Bayesian regression with identical priors.</p>
-
 <p>The loo package uses <a href="https://youtu.be/Re-2yVd0Mqk?t=327">leave-one-out cross validation</a> to measure a model&rsquo;s predictive accuracy for a single observation that is excluded from the model.
 It does this for all observations in the dataset.</p>
-
 <p>Both models were compared on their <a href="https://mc-stan.org/loo/reference/loo-glossary.html">expected log pointwise predictive density</a>, and <a href="https://blakeshurtz.github.io/multilevel_marketing/#003_loo">the multi-level model performed better</a>.</p>
-
 <h4 id="model-diagnosis-with-shinystan">Model Diagnosis with ShinyStan</h4>
-
 <p>For a number of reasons, models may fail to give accurate results unless they are correctly programmed. <em>How you program the model is part of the model.</em></p>
-
 <p>The easiest way to look &ldquo;under the hood&rdquo; is to do so in ShinyStan, a Shiny app template for a Stan model.</p>
-
 <p>This model passed all diagnostics without any issues and has been <a href="https://blakeobeans.shinyapps.io/Multi-Level-Marketing/">shared on my Shiny dashboard</a>.</p>
-
 <h4 id="model-inference-with-bayesplot">Model Inference with Bayesplot</h4>
-
 <p>Bayesplot makes numeric and graphical model inference easy by providing common functions for <a href="https://mc-stan.org/bayesplot/articles/plotting-mcmc-draws.html">analysis of MCMC draws</a>.</p>
-
 <p>It utilizes the <a href="https://ggplot2.tidyverse.org/index.html">ggplot2 graphing library</a>, which allows the analyst to fine tune the plot by adding text, labels, etc.</p>
-
-<p><img src="/img/portfolio/marketing_comparison.png" alt="This is me" /></p>
-
+<p><img src="/img/portfolio/marketing_comparison.png" alt="This is me"></p>
 <h4 id="conclusion">Conclusion</h4>
-
-<p>That&rsquo;s a brief overview of the project. For more information, including the prior and posterior predictive distributions, see the <a href="https://blakeshurtz.github.io/multilevel_marketing/">full R notebook here</a>.
-<script type="text/javascript"
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script></p>
+<p>That&rsquo;s a brief overview of the project. For more information, including the prior and posterior predictive distributions, see the <a href="https://blakeshurtz.github.io/multilevel_marketing/">full R notebook here</a>.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
          
       </div>
     </div>

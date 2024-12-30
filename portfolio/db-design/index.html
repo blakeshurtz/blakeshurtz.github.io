@@ -29,7 +29,6 @@
 <link href="https://blakeshurtz.github.io/css/custom.css" rel="stylesheet">
 <link rel="shortcut icon" href="https://blakeshurtz.github.io/img/favicon.png">
 
-
 </head>
 <body>
   <div id="all">
@@ -37,7 +36,7 @@
           <div class="row row-offcanvas row-offcanvas-left">
               <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
   <div class="sidebar-content">
-    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io/">Blake Shurtz</a></h1>
     
       <p class="sidebar-p">I am a data analyst with 10 years of experience in applying data-driven thinking in a business context.</p>
     
@@ -114,7 +113,7 @@
 <div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
   <div class="small-navbar visible-xs">
   <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
-  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io/">Blake Shurtz</a></h1>
 </div>
 
   <div class="row">
@@ -122,77 +121,51 @@
       <div class="content-column-content">
          <h1>Storage Migration to the Cloud</h1>
          <p>From ad hoc data collection to a secure relational database on AWS</p>
-
-<hr />
-
+<hr>
 <p>When I first began creating data-heavy reports for management, I had to consult multiple data sources from across departments. This was a grinding inefficiency in my workflow.
 Furthermore, sometimes I needed to work from home, which added another layer of difficulty to accessing data.
 I needed the data to be immediately available as soon as the research question dropped.</p>
-
 <p><em>I needed a cloud database.</em></p>
-
 <h4 id="creating-a-database-instance">Creating a Database Instance</h4>
-
 <p>There are many options for low-cost relational databases in the cloud. Both
 <a href="https://aws.amazon.com/rds/?sc_ichannel=ha&amp;sc_icampaign=pac_rds_console_q2_2018&amp;sc_isegment=en&amp;sc_iplace=console_ed&amp;sc_icontent=awssm-776&amp;trk=ha_awssm-776">Amazon Web Services</a>
- and
- <a href="https://azure.microsoft.com/en-us/pricing/details/sql-database/single/">Microsoft Azure</a> offer free 12 month trials, followed by data usage-based pricing plans.</p>
-
+and
+<a href="https://azure.microsoft.com/en-us/pricing/details/sql-database/single/">Microsoft Azure</a> offer free 12 month trials, followed by data usage-based pricing plans.</p>
 <p>To connect to my cloud database, I used <a href="https://stackoverflow.com/questions/28429493/how-to-connect-mysql-workbench-to-amazon-rds">MySQL Workbench</a>.
 I just added a new connection, then entered the endpoint, port, username and password info.
 Within the AWS instance dashboard, I also needed to assign a
- <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html#CHAP_SettingUp.SecurityGroup">security group</a>
- to multiple IPs in order to allow access at both my home and office.</p>
-
+<a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SettingUp.html#CHAP_SettingUp.SecurityGroup">security group</a>
+to multiple IPs in order to allow access at both my home and office.</p>
 <h4 id="storage-migration">Storage Migration</h4>
-
 <p>Our office leases a CRM tool, <a href="http://www.successware21.com/">Successware21</a>, which has a SQL backend but a clunky userform-based front-end.
 Despite the SQL backend, Successware&rsquo;s data was not tidy when exported to a .csv file.
 An R script was written to clean each file prior to writing to the RDBS.
 For especially messy datasets, Visual Basic in Excel was also used.</p>
-
 <h4 id="database-model">Database Model</h4>
-
 <p>In order to visualize the connections between the tables and variables, I created a database model using <a href="https://dbdiagram.io/home">dbdiagram.io</a>, which uses <a href="https://www.dbml.org/home/#intro">Database Markup Language (DBML)</a> to structure the model from the command line.</p>
-
-<p><img src="/img/portfolio/greiner-db-design.png" alt="This is me" /></p>
-
+<p><img src="/img/portfolio/greiner-db-design.png" alt="This is me"></p>
 <h4 id="documentation">Documentation</h4>
-
 <p>The process of exporting, cleaning and writing the data to the database is thoroughly <a href="https://github.com/blakeshurtz/mysql-script-lib">documented in a Github repo</a>.</p>
-
 <p>The documentation consists of two parts: a &ldquo;how-to&rdquo; user guide for exporting data and references to project resources including the revision history, data dictionary (tables, columns, data types and values), SQL queries and more.</p>
-
 <h4 id="maintenance">Maintenance</h4>
-
 <p>Finally, the database is ready to go. All that I need to do is update it on a regular basis.</p>
-
 <h4 id="analytics">Analytics</h4>
-
 <p>Whenever I have a research question, I can log into whatever analytics software I like and get to work.</p>
-
 <p>In R Studio, I use either the <a href="https://db.rstudio.com/dbi/">DBI</a> or <a href="https://github.com/r-dbi/RMariaDB">RMariaDB</a> packages to download my data. All it takes is a few lines of code:</p>
-
-<pre><code class="language-r">library(RMariaDB)
-con &lt;- dbConnect(MariaDB(),
-                 user = '[USERNAME]',
-                 password = '[PASSWORD]',
-                 host = '[INSTANCE_ENDPOINT]',
-                 dbname='[SCHEMA]')
-mydata &lt;- dbReadTable(conn = con, name = '[TABLENAME]', value = [TABLENAME], overwrite = TRUE)
-</code></pre>
-
-<p>In a Jupyter Notebook running Python, I use the <a href="https://www.sqlalchemy.org/">sqlalchemy</a> module.</p>
-
-<pre><code class="language-py">import sqlalchemy as db
-connection_string = &quot;mysql://[USERNAME]:[PASSWORD]@[ENDPOINT]:[PORT]/[SCHEMA]&quot;
-engine = db.create_engine(connection_string)
-query = &quot;select * from [TABLE]&quot;
-df = pd.read_sql_query(query, engine)
-</code></pre>
-
-<h4 id="wrapping-up">Wrapping Up</h4>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(RMariaDB)
+</span></span><span style="display:flex;"><span>con <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">dbConnect</span>(<span style="color:#a6e22e">MariaDB</span>(),
+</span></span><span style="display:flex;"><span>                 user <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[USERNAME]&#39;</span>,
+</span></span><span style="display:flex;"><span>                 password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[PASSWORD]&#39;</span>,
+</span></span><span style="display:flex;"><span>                 host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[INSTANCE_ENDPOINT]&#39;</span>,
+</span></span><span style="display:flex;"><span>                 dbname<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;[SCHEMA]&#39;</span>)
+</span></span><span style="display:flex;"><span>mydata <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">dbReadTable</span>(conn <span style="color:#f92672">=</span> con, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[TABLENAME]&#39;</span>, value <span style="color:#f92672">=</span> [TABLENAME], overwrite <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+</span></span></code></pre></div><p>In a Jupyter Notebook running Python, I use the <a href="https://www.sqlalchemy.org/">sqlalchemy</a> module.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> sqlalchemy <span style="color:#66d9ef">as</span> db
+</span></span><span style="display:flex;"><span>connection_string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mysql://[USERNAME]:[PASSWORD]@[ENDPOINT]:[PORT]/[SCHEMA]&#34;</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>create_engine(connection_string)
+</span></span><span style="display:flex;"><span>query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from [TABLE]&#34;</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_sql_query(query, engine)
+</span></span></code></pre></div><h4 id="wrapping-up">Wrapping Up</h4>
 <p>In the end, I&rsquo;ve come to the conclusion that database administration and data analysis are like peanut butter and jelly: They&rsquo;re both great on their own, but they taste even better together.</p>
          
       </div>

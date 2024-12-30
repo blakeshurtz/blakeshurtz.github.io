@@ -29,7 +29,6 @@
 <link href="https://blakeshurtz.github.io/css/custom.css" rel="stylesheet">
 <link rel="shortcut icon" href="https://blakeshurtz.github.io/img/favicon.png">
 
-
 </head>
 <body>
   <div id="all">
@@ -37,7 +36,7 @@
           <div class="row row-offcanvas row-offcanvas-left">
               <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
   <div class="sidebar-content">
-    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io/">Blake Shurtz</a></h1>
     
       <p class="sidebar-p">I am a data analyst with 10 years of experience in applying data-driven thinking in a business context.</p>
     
@@ -114,7 +113,7 @@
 <div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
   <div class="small-navbar visible-xs">
   <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
-  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
+  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io/">Blake Shurtz</a></h1>
 </div>
 
   <div class="row">
@@ -122,56 +121,40 @@
       <div class="content-column-content">
          <h1>Speedy ML</h1>
          <p>10x your ML models using AWS databases and an EC2 instance.</p>
-
 <p>I only have 4 cores on my laptop. That is severly restrictive when running an ML or stochastic model.</p>
-
 <p>To speed things along, I upload my data to an AWS database and train my models in R in an AWS cloud computing instance. I find these are complementary workflows that ensure my data is securely hosted and my models exectute quickly.</p>
-
 <p>While this workflow costs a few dollars, this is well worth it to me as it only takes a minute or less to execute most models.</p>
-
 <h4 id="part-1">Part 1</h4>
-
 <ol>
 <li>Create an account on <a href="https://aws.amazon.com/">Amazon Web Services</a>. AWS is its own ecosystem, so feel free to explore what it offers. Come back when you&rsquo;re ready to continue.</li>
 <li>Create an <a href="https://aws.amazon.com/rds/">Amazon relational database (RDS)</a>.  Note the region for your database. For example, my RDS is in <strong>us-west-1a</strong>.</li>
 <li>In R, install <em>RMariaDB</em>. This is the latest package for interfacing with SQL through R.</li>
 <li>Make sure you can connect to your RDS from R studio on your local machine. I keep a test script for this very purpose. It should only take a few seconds to connect.</li>
 </ol>
-
-<pre><code class="language-r">library(RMariaDB)
-mydata &lt;- mtcars; mydata &lt;- as.data.frame(mydata)
-con &lt;- dbConnect(MariaDB(),
-                 user = 'username',
-                 password = 'password',
-                 host = 'mydbinstance.xxx.region.rds.amazonaws.com', #copy &quot;Endpoint&quot; from database page
-                 dbname='dbname')
-dbWriteTable(conn = con, name = 'carsdata', value = mydata, overwrite = TRUE)
-</code></pre>
-
-<blockquote>
-<p>You may also want to install <a href="https://dev.mysql.com/doc/refman/8.0/en/">MySQL Workbench</a> for a user-friendly SQL GUI. You can use MySQL Workbench to create new databases and keep them organized.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(RMariaDB)
+</span></span><span style="display:flex;"><span>mydata <span style="color:#f92672">&lt;-</span> mtcars; mydata <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.data.frame</span>(mydata)
+</span></span><span style="display:flex;"><span>con <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">dbConnect</span>(<span style="color:#a6e22e">MariaDB</span>(),
+</span></span><span style="display:flex;"><span>                 user <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;username&#39;</span>,
+</span></span><span style="display:flex;"><span>                 password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;password&#39;</span>,
+</span></span><span style="display:flex;"><span>                 host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mydbinstance.xxx.region.rds.amazonaws.com&#39;</span>, <span style="color:#75715e">#copy &#34;Endpoint&#34; from database page</span>
+</span></span><span style="display:flex;"><span>                 dbname<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;dbname&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dbWriteTable</span>(conn <span style="color:#f92672">=</span> con, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;carsdata&#39;</span>, value <span style="color:#f92672">=</span> mydata, overwrite <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+</span></span></code></pre></div><blockquote>
+<p>You may also want to install [MySQL Workbench] (<a href="https://dev.mysql.com/doc/refman/8.0/en/">https://dev.mysql.com/doc/refman/8.0/en/</a>) for a user-friendly SQL GUI. You can use MySQL Workbench to create new databases and keep them organized.</p>
 </blockquote>
-
 <p>That&rsquo;s the end of part 1.</p>
-
 <h4 id="part-2">Part 2</h4>
-
-<ol>
+<ol start="5">
 <li>Duplicate the maintained EC2 instance that runs R Studio: <a href="http://www.louisaslett.com/RStudio_AMI/">http://www.louisaslett.com/RStudio_AMI/</a>  <strong>Be sure to create the EC2 instance in the same region as the database instance.</strong></li>
 <li>In order for your EC2 instance to connect to your database, navigate to <strong>security groups</strong> and add an open port at: <strong>inbound Type</strong> = <em>MYSQL/Aurora</em>, <strong>Protocol</strong> = <em>TCP</em>, <strong>Port Range</strong> = <em>3306</em>, <strong>Source</strong> = <strong>[EC2 Private IP]</strong> <em>/32</em></li>
 <li>Login to your R Studio EC2 instance. Re-run the R code above, but instead of <em>dbWriteTable()</em>, use</li>
 </ol>
-
-<pre><code class="language-r">mydata &lt;- dbReadTable(conn = con, name = 'carsdata', value = mydata, overwrite = TRUE)
-</code></pre>
-
-<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>mydata <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">dbReadTable</span>(conn <span style="color:#f92672">=</span> con, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;carsdata&#39;</span>, value <span style="color:#f92672">=</span> mydata, overwrite <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+</span></span></code></pre></div><blockquote>
 <p>Then, run your models at 64 cores.</p>
 </blockquote>
-
 <p><strong>Ultimately, you may want to download your trained models for further analysis/report creation.</strong></p>
-
-<ol>
+<ol start="8">
 <li>Navigate to Network &amp; Security -&gt; Key Pairs. Create, name, and download the .pem file.</li>
 <li>Install <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a> and use it to generate a private key from your public key.</li>
 <li>Use <a href="https://filezilla-project.org/">Filezilla</a> to access your EC2 instance&rsquo;s files directory and follow the instructions <a href="https://comtechies.com/how-to-upload-and-download-files-in-amazon-aws-ec2-instance.html">here</a> to login. (The default username is &ldquo;ubuntu&rdquo; and there is no password.)</li>
