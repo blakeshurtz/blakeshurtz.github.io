@@ -27,10 +27,7 @@
 
 
 <link href="https://blakeshurtz.github.io/css/custom.css" rel="stylesheet">
-<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-<link rel="shortcut icon" href="/img/favicon.png">
+<link rel="shortcut icon" href="https://blakeshurtz.github.io/img/favicon.png">
 
 </head>
 <body>
@@ -45,7 +42,7 @@
     
       <p class="sidebar-p">This site contains a portfolio of projects I've led that demonstrate best practices in applied statistics and data management.</p>
     
-      <p class="sidebar-p">Originally from the Bay Area, now living in Blacksburg, VA (go Hokies!).</p>
+      <p class="sidebar-p">Originally from the Bay Area, currently based in Davis, CA.</p>
     
     <ul class="sidebar-menu">
       
@@ -57,6 +54,10 @@
       
     </ul>
     <p class="social">
+  
+  <a href="https://www.facebook.com/blake.shurtz.5" data-animate-hover="pulse" class="external facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
   
   
   
@@ -76,11 +77,19 @@
   </a>
   
   
+  <a href="https://stats.stackexchange.com/users/206673/blake-shurtz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-stack-overflow"></i>
+  </a>
+  
   
   <a href="https://github.com/blakeshurtz" data-animate-hover="pulse" class="external">
     <i class="fa fa-github"></i>
   </a>
   
+  
+  <a href="https://www.youtube.com/channel/UCPDv9VWu9TjTmxja-qLEvVA?view_as=subscriber" data-animate-hover="pulse" class="external">
+    <i class="fa fa-youtube"></i>
+  </a>
   
   
 </p>
@@ -179,7 +188,7 @@ p_{i&hellip;} = \alpha_{i&hellip;} + x \beta \newline
 <p>Where <em>i</em> represents a particular appointment and <strong>…</strong> represents the <em>customer</em>, <em>lead source</em>, <em>year</em>, <em>city</em> and <em>sales professional</em> multi-level variables.
 <em>α</em> represents varying intercepts for each combination of multi-level variables and <em>β</em> represents appointment-level coefficient for <em>product</em> and <em>call_to_estimate</em>.</p>
 <p>As shown in the code below, RStanARM expresses multi-level models in a reduced form using <a href="http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#model-specification">lme4 syntax</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>mlm_sim <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">stan_glmer</span>(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>mlm_sim <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">stan_glmer</span>(
 </span></span><span style="display:flex;"><span>		formula <span style="color:#f92672">=</span> close <span style="color:#f92672">~</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>customer_id) <span style="color:#f92672">+</span>
 </span></span><span style="display:flex;"><span>						  (<span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>lead_source) <span style="color:#f92672">+</span>
 </span></span><span style="display:flex;"><span>						  (<span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>year) <span style="color:#f92672">+</span>

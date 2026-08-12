@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>ML Workflow for R</title>
+<title>tidymodels and Kaggle</title>
 <meta name="description" content="Describe your website">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -27,10 +27,7 @@
 
 
 <link href="https://blakeshurtz.github.io/css/custom.css" rel="stylesheet">
-<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-<link rel="shortcut icon" href="/img/favicon.png">
+<link rel="shortcut icon" href="https://blakeshurtz.github.io/img/favicon.png">
 
 </head>
 <body>
@@ -45,7 +42,7 @@
     
       <p class="sidebar-p">This site contains a portfolio of projects I've led that demonstrate best practices in applied statistics and data management.</p>
     
-      <p class="sidebar-p">Originally from the Bay Area, now living in Blacksburg, VA (go Hokies!).</p>
+      <p class="sidebar-p">Originally from the Bay Area, currently based in Davis, CA.</p>
     
     <ul class="sidebar-menu">
       
@@ -57,6 +54,10 @@
       
     </ul>
     <p class="social">
+  
+  <a href="https://www.facebook.com/blake.shurtz.5" data-animate-hover="pulse" class="external facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
   
   
   
@@ -76,11 +77,19 @@
   </a>
   
   
+  <a href="https://stats.stackexchange.com/users/206673/blake-shurtz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-stack-overflow"></i>
+  </a>
+  
   
   <a href="https://github.com/blakeshurtz" data-animate-hover="pulse" class="external">
     <i class="fa fa-github"></i>
   </a>
   
+  
+  <a href="https://www.youtube.com/channel/UCPDv9VWu9TjTmxja-qLEvVA?view_as=subscriber" data-animate-hover="pulse" class="external">
+    <i class="fa fa-youtube"></i>
+  </a>
   
   
 </p>
@@ -110,38 +119,59 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>ML Workflow for R</h1>
-         <p>Quickly find the best ML Model Using Caret</p>
-<p>Github <a href="https://github.com/blakeobeans/Speedy-ML">here</a>. A typical starting workflow might be broken out below.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/wrangling/ETL.r&#39;</span>) <span style="color:#75715e">#ETL</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/wrangling/wrangle.r&#39;</span>) <span style="color:#75715e">#wrangle</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/wrangling/missing_data.r&#39;</span>) <span style="color:#75715e">#impute </span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/pre-processing/00. transform.r&#39;</span>) <span style="color:#75715e">#normalize </span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/pre-processing/01. dummyvars.r&#39;</span>) <span style="color:#75715e">#one hot encode</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/pre-processing/03. nzv.r&#39;</span>) <span style="color:#75715e">#remove near zero variance predictors</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/pre-processing/04. correlated predictors.r&#39;</span>) <span style="color:#75715e">#drop highly correlated predictors</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">source</span>(<span style="color:#e6db74">&#39;scripts/pre-processing/05. partitioning.r&#39;</span>) <span style="color:#75715e">#partition data</span>
-</span></span></code></pre></div><p>Caret allows for consistent syntax in building models from multiple packages. Caret covers about <a href="https://topepo.github.io/caret/available-models.html">250 different ML models</a>, including those using H20.</p>
-<p>Simply set some automated training parameters&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>ctrl <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">trainControl</span>(method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;repeatedcv&#34;</span>, 
-</span></span><span style="display:flex;"><span>                     number <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, <span style="color:#75715e">#10-fold cross validation </span>
-</span></span><span style="display:flex;"><span>                     repeats <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>, <span style="color:#75715e">#repeated</span>
-</span></span><span style="display:flex;"><span>                     search <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;random&#34;</span>,
-</span></span><span style="display:flex;"><span>                     classProbs <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>,
-</span></span><span style="display:flex;"><span>                     summaryFunction <span style="color:#f92672">=</span> twoClassSummary,
-</span></span><span style="display:flex;"><span>                     sampling <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;smote&#34;</span>)
-</span></span></code></pre></div><p>&hellip;and execute! The model below is a random forest model.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>rfTune <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">train</span>(y <span style="color:#f92672">~</span> ., 
-</span></span><span style="display:flex;"><span>                data<span style="color:#f92672">=</span>dfTrain,
-</span></span><span style="display:flex;"><span>                method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ranger&#34;</span>,
-</span></span><span style="display:flex;"><span>                preProc <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;center&#34;</span>, <span style="color:#e6db74">&#34;scale&#34;</span>, <span style="color:#e6db74">&#34;BoxCox&#34;</span>), 
-</span></span><span style="display:flex;"><span>                tuneLength <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>,
-</span></span><span style="display:flex;"><span>                trControl <span style="color:#f92672">=</span> ctrl,
-</span></span><span style="display:flex;"><span>                metric <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ROC&#34;</span>)
-</span></span></code></pre></div><p>Some of the more complicated models may require a grid search object to be passed to the tuneGrid method in the <em>train()</em> function.</p>
-<p>There are a number of other analytic functions to performed on model objects, including tuning the model&rsquo;s hyperparameters and updating predictions using Caret&rsquo;s <em>update()</em> function.
-<img src="/img/portfolio/Rplot01.png" alt="initialstate"></p>
-<p>This visualization of some dynamic features of an XGBoost model measure the accuracy for a varied combination of boosting iterations (ie. resampling data) and lower-weight nodes. Lower instance weight fits the data better but fewer nodes may suggest overfitting at this extreme margin of accuracy.</p>
+         <h1>tidymodels and Kaggle</h1>
+         <p>Building a repeatable machine-learning workflow in R with tidymodels and Kaggle.</p>
+<p>Kaggle is a useful place to practice on a real problem. The data is already collected, the objective is clear and the leaderboard gives you immediate feedback. It is tempting to keep changing the model until the score moves up. That can work, but it does not tell you whether the model will perform well on new data.</p>
+<p>For that reason, I use <a href="https://www.tidymodels.org/">tidymodels</a> to keep the workflow organized. The same steps used to prepare the training data are saved and applied to the test data. Resampling happens locally. Kaggle is the final check, not the validation strategy.</p>
+<h4 id="data-preparation">Data Preparation</h4>
+<p>A recipe keeps the preprocessing next to the model. In this example, missing numeric values are imputed, categorical predictors are converted to dummy variables and predictors with no variation are removed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(tidymodels)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set.seed</span>(<span style="color:#ae81ff">123</span>)
+</span></span><span style="display:flex;"><span>folds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">vfold_cv</span>(train_data, v <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, strata <span style="color:#f92672">=</span> outcome)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kaggle_recipe <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">recipe</span>(outcome <span style="color:#f92672">~</span> ., data <span style="color:#f92672">=</span> train_data) <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">step_impute_median</span>(<span style="color:#a6e22e">all_numeric_predictors</span>()) <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">step_unknown</span>(<span style="color:#a6e22e">all_nominal_predictors</span>()) <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">step_dummy</span>(<span style="color:#a6e22e">all_nominal_predictors</span>()) <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">step_zv</span>(<span style="color:#a6e22e">all_predictors</span>())
+</span></span></code></pre></div><p>The recipe also prevents a common Kaggle problem: making one set of changes to the training data and a slightly different set of changes to the submission data.</p>
+<h4 id="model-tuning">Model Tuning</h4>
+<p>Tidymodels provides consistent syntax across model engines. I can start with a random forest, define the parameters I want to tune and combine everything into one workflow.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>rf_model <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rand_forest</span>(
+</span></span><span style="display:flex;"><span>  mtry <span style="color:#f92672">=</span> <span style="color:#a6e22e">tune</span>(),
+</span></span><span style="display:flex;"><span>  min_n <span style="color:#f92672">=</span> <span style="color:#a6e22e">tune</span>(),
+</span></span><span style="display:flex;"><span>  trees <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">set_mode</span>(<span style="color:#e6db74">&#34;classification&#34;</span>) <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">set_engine</span>(<span style="color:#e6db74">&#34;ranger&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rf_workflow <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">workflow</span>() <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">add_recipe</span>(kaggle_recipe) <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">add_model</span>(rf_model)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rf_results <span style="color:#f92672">&lt;-</span> rf_workflow <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tune_grid</span>(
+</span></span><span style="display:flex;"><span>    resamples <span style="color:#f92672">=</span> folds,
+</span></span><span style="display:flex;"><span>    grid <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>,
+</span></span><span style="display:flex;"><span>    metrics <span style="color:#f92672">=</span> <span style="color:#a6e22e">metric_set</span>(roc_auc, accuracy)
+</span></span><span style="display:flex;"><span>  )
+</span></span></code></pre></div><p>The leaderboard score is easy to see. The more important result is the distribution of scores across the ten folds. If a model performs well on average and does not fall apart on a few folds, I have more confidence that the improvement is real.</p>
+<h4 id="kaggle-submission">Kaggle Submission</h4>
+<p>Once the model is selected, I finalize the workflow and train it on the full training set. Predictions are then written in the exact format expected by Kaggle.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>final_workflow <span style="color:#f92672">&lt;-</span> rf_workflow <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">finalize_workflow</span>(<span style="color:#a6e22e">select_best</span>(rf_results, metric <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;roc_auc&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>final_fit <span style="color:#f92672">&lt;-</span> final_workflow <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fit</span>(data <span style="color:#f92672">=</span> train_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>submission <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">predict</span>(final_fit, kaggle_test, type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;prob&#34;</span>) <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">bind_cols</span>(kaggle_test <span style="color:#f92672">|&gt;</span> <span style="color:#a6e22e">select</span>(id)) <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">transmute</span>(id, outcome <span style="color:#f92672">=</span> .pred_yes)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">write_csv</span>(submission, <span style="color:#e6db74">&#34;submission.csv&#34;</span>)
+</span></span></code></pre></div><p>Then, submit the file and see where it lands. If the public score and the resampling results tell different stories, I trust the resampling results first. A public leaderboard is still a sample, and repeatedly submitting against it is another way to overfit.</p>
+<p>What I like about this workflow is that it scales beyond a competition. The recipe, model specification and tuning results can be saved, reviewed and reused. Kaggle makes the exercise fun. Tidymodels makes the result reproducible.</p>
          
       </div>
     </div>

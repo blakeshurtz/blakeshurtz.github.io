@@ -27,10 +27,7 @@
 
 
 <link href="https://blakeshurtz.github.io/css/custom.css" rel="stylesheet">
-<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-<link rel="shortcut icon" href="/img/favicon.png">
+<link rel="shortcut icon" href="https://blakeshurtz.github.io/img/favicon.png">
 
 </head>
 <body>
@@ -45,7 +42,7 @@
     
       <p class="sidebar-p">This site contains a portfolio of projects I've led that demonstrate best practices in applied statistics and data management.</p>
     
-      <p class="sidebar-p">Originally from the Bay Area, now living in Blacksburg, VA (go Hokies!).</p>
+      <p class="sidebar-p">Originally from the Bay Area, currently based in Davis, CA.</p>
     
     <ul class="sidebar-menu">
       
@@ -57,6 +54,10 @@
       
     </ul>
     <p class="social">
+  
+  <a href="https://www.facebook.com/blake.shurtz.5" data-animate-hover="pulse" class="external facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
   
   
   
@@ -76,11 +77,19 @@
   </a>
   
   
+  <a href="https://stats.stackexchange.com/users/206673/blake-shurtz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-stack-overflow"></i>
+  </a>
+  
   
   <a href="https://github.com/blakeshurtz" data-animate-hover="pulse" class="external">
     <i class="fa fa-github"></i>
   </a>
   
+  
+  <a href="https://www.youtube.com/channel/UCPDv9VWu9TjTmxja-qLEvVA?view_as=subscriber" data-animate-hover="pulse" class="external">
+    <i class="fa fa-youtube"></i>
+  </a>
   
   
 </p>
@@ -143,7 +152,7 @@ For especially messy datasets, Visual Basic in Excel was also used.</p>
 <h4 id="analytics">Analytics</h4>
 <p>Whenever I have a research question, I can log into whatever analytics software I like and get to work.</p>
 <p>In R Studio, I use either the <a href="https://db.rstudio.com/dbi/">DBI</a> or <a href="https://github.com/r-dbi/RMariaDB">RMariaDB</a> packages to download my data. All it takes is a few lines of code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(RMariaDB)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(RMariaDB)
 </span></span><span style="display:flex;"><span>con <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">dbConnect</span>(<span style="color:#a6e22e">MariaDB</span>(),
 </span></span><span style="display:flex;"><span>                 user <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[USERNAME]&#39;</span>,
 </span></span><span style="display:flex;"><span>                 password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[PASSWORD]&#39;</span>,
@@ -151,7 +160,7 @@ For especially messy datasets, Visual Basic in Excel was also used.</p>
 </span></span><span style="display:flex;"><span>                 dbname<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;[SCHEMA]&#39;</span>)
 </span></span><span style="display:flex;"><span>mydata <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">dbReadTable</span>(conn <span style="color:#f92672">=</span> con, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[TABLENAME]&#39;</span>, value <span style="color:#f92672">=</span> [TABLENAME], overwrite <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
 </span></span></code></pre></div><p>In a Jupyter Notebook running Python, I use the <a href="https://www.sqlalchemy.org/">sqlalchemy</a> module.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> sqlalchemy <span style="color:#66d9ef">as</span> db
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> sqlalchemy <span style="color:#66d9ef">as</span> db
 </span></span><span style="display:flex;"><span>connection_string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mysql://[USERNAME]:[PASSWORD]@[ENDPOINT]:[PORT]/[SCHEMA]&#34;</span>
 </span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>create_engine(connection_string)
 </span></span><span style="display:flex;"><span>query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from [TABLE]&#34;</span>

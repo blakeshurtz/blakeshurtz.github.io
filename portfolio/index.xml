@@ -51,11 +51,11 @@
       <description>&lt;p&gt;Excel + VBA application for project cost estimation and contract creation.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>ML Workflow for R</title>
+      <title>tidymodels and Kaggle</title>
       <link>https://blakeshurtz.github.io/portfolio/mlcaret/</link>
       <pubDate>Sat, 05 Nov 2016 19:56:17 +0530</pubDate>
       <guid>https://blakeshurtz.github.io/portfolio/mlcaret/</guid>
-      <description>&lt;p&gt;Quickly find the best ML Model Using Caret&lt;/p&gt;</description>
+      <description>&lt;p&gt;Building a repeatable machine-learning workflow in R with tidymodels and Kaggle.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Speedy ML</title>
@@ -69,7 +69,7 @@
       <link>https://blakeshurtz.github.io/portfolio/contagionmarkov/</link>
       <pubDate>Sat, 05 Nov 2016 19:59:22 +0530</pubDate>
       <guid>https://blakeshurtz.github.io/portfolio/contagionmarkov/</guid>
-      <description>&lt;p&gt;Is it rational to quarantine sick kids? typo&lt;/p&gt;</description>
+      <description>&lt;p&gt;Is it rational to quarantine sick kids?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Modeling sampling variability using a nested experimental design</title>
