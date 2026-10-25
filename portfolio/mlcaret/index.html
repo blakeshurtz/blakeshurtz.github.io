@@ -36,7 +36,7 @@
           <div class="row row-offcanvas row-offcanvas-left">
               <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
   <div class="sidebar-content">
-    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io/">Blake Shurtz</a></h1>
+    <h1 class="sidebar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
     
       <p class="sidebar-p">I am a data analyst with 10 years of experience in applying data-driven thinking in a business context.</p>
     
@@ -49,6 +49,8 @@
         <li><a href="https://blakeshurtz.github.io/portfolio/">Home</a></li>
       
         <li><a href="https://blakeshurtz.github.io/about/">About</a></li>
+      
+        <li><a href="https://blakeshurtz.github.io/blog/">Blog</a></li>
       
         <li><a href="https://blakeshurtz.github.io/contact/">Get in touch</a></li>
       
@@ -113,7 +115,7 @@
 <div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
   <div class="small-navbar visible-xs">
   <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
-  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io/">Blake Shurtz</a></h1>
+  <h1 class="small-navbar-heading"><a href="https://blakeshurtz.github.io">Blake Shurtz</a></h1>
 </div>
 
   <div class="row">
@@ -121,56 +123,74 @@
       <div class="content-column-content">
          <h1>tidymodels and Kaggle</h1>
          <p>Building a repeatable machine-learning workflow in R with tidymodels and Kaggle.</p>
+
 <p>Kaggle is a useful place to practice on a real problem. The data is already collected, the objective is clear and the leaderboard gives you immediate feedback. It is tempting to keep changing the model until the score moves up. That can work, but it does not tell you whether the model will perform well on new data.</p>
+
 <p>For that reason, I use <a href="https://www.tidymodels.org/">tidymodels</a> to keep the workflow organized. The same steps used to prepare the training data are saved and applied to the test data. Resampling happens locally. Kaggle is the final check, not the validation strategy.</p>
+
 <h4 id="data-preparation">Data Preparation</h4>
+
 <p>A recipe keeps the preprocessing next to the model. In this example, missing numeric values are imputed, categorical predictors are converted to dummy variables and predictors with no variation are removed.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(tidymodels)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set.seed</span>(<span style="color:#ae81ff">123</span>)
-</span></span><span style="display:flex;"><span>folds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">vfold_cv</span>(train_data, v <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, strata <span style="color:#f92672">=</span> outcome)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>kaggle_recipe <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">recipe</span>(outcome <span style="color:#f92672">~</span> ., data <span style="color:#f92672">=</span> train_data) <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">step_impute_median</span>(<span style="color:#a6e22e">all_numeric_predictors</span>()) <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">step_unknown</span>(<span style="color:#a6e22e">all_nominal_predictors</span>()) <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">step_dummy</span>(<span style="color:#a6e22e">all_nominal_predictors</span>()) <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">step_zv</span>(<span style="color:#a6e22e">all_predictors</span>())
-</span></span></code></pre></div><p>The recipe also prevents a common Kaggle problem: making one set of changes to the training data and a slightly different set of changes to the submission data.</p>
+
+<pre><code class="language-r">library(tidymodels)
+
+set.seed(123)
+folds &lt;- vfold_cv(train_data, v = 10, strata = outcome)
+
+kaggle_recipe &lt;- recipe(outcome ~ ., data = train_data) |&gt;
+  step_impute_median(all_numeric_predictors()) |&gt;
+  step_unknown(all_nominal_predictors()) |&gt;
+  step_dummy(all_nominal_predictors()) |&gt;
+  step_zv(all_predictors())
+</code></pre>
+
+<p>The recipe also prevents a common Kaggle problem: making one set of changes to the training data and a slightly different set of changes to the submission data.</p>
+
 <h4 id="model-tuning">Model Tuning</h4>
+
 <p>Tidymodels provides consistent syntax across model engines. I can start with a random forest, define the parameters I want to tune and combine everything into one workflow.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>rf_model <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rand_forest</span>(
-</span></span><span style="display:flex;"><span>  mtry <span style="color:#f92672">=</span> <span style="color:#a6e22e">tune</span>(),
-</span></span><span style="display:flex;"><span>  min_n <span style="color:#f92672">=</span> <span style="color:#a6e22e">tune</span>(),
-</span></span><span style="display:flex;"><span>  trees <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
-</span></span><span style="display:flex;"><span>) <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">set_mode</span>(<span style="color:#e6db74">&#34;classification&#34;</span>) <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">set_engine</span>(<span style="color:#e6db74">&#34;ranger&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>rf_workflow <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">workflow</span>() <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">add_recipe</span>(kaggle_recipe) <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">add_model</span>(rf_model)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>rf_results <span style="color:#f92672">&lt;-</span> rf_workflow <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tune_grid</span>(
-</span></span><span style="display:flex;"><span>    resamples <span style="color:#f92672">=</span> folds,
-</span></span><span style="display:flex;"><span>    grid <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>,
-</span></span><span style="display:flex;"><span>    metrics <span style="color:#f92672">=</span> <span style="color:#a6e22e">metric_set</span>(roc_auc, accuracy)
-</span></span><span style="display:flex;"><span>  )
-</span></span></code></pre></div><p>The leaderboard score is easy to see. The more important result is the distribution of scores across the ten folds. If a model performs well on average and does not fall apart on a few folds, I have more confidence that the improvement is real.</p>
+
+<pre><code class="language-r">rf_model &lt;- rand_forest(
+  mtry = tune(),
+  min_n = tune(),
+  trees = 1000
+) |&gt;
+  set_mode(&quot;classification&quot;) |&gt;
+  set_engine(&quot;ranger&quot;)
+
+rf_workflow &lt;- workflow() |&gt;
+  add_recipe(kaggle_recipe) |&gt;
+  add_model(rf_model)
+
+rf_results &lt;- rf_workflow |&gt;
+  tune_grid(
+    resamples = folds,
+    grid = 20,
+    metrics = metric_set(roc_auc, accuracy)
+  )
+</code></pre>
+
+<p>The leaderboard score is easy to see. The more important result is the distribution of scores across the ten folds. If a model performs well on average and does not fall apart on a few folds, I have more confidence that the improvement is real.</p>
+
 <h4 id="kaggle-submission">Kaggle Submission</h4>
+
 <p>Once the model is selected, I finalize the workflow and train it on the full training set. Predictions are then written in the exact format expected by Kaggle.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>final_workflow <span style="color:#f92672">&lt;-</span> rf_workflow <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">finalize_workflow</span>(<span style="color:#a6e22e">select_best</span>(rf_results, metric <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;roc_auc&#34;</span>))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>final_fit <span style="color:#f92672">&lt;-</span> final_workflow <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fit</span>(data <span style="color:#f92672">=</span> train_data)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>submission <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">predict</span>(final_fit, kaggle_test, type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;prob&#34;</span>) <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">bind_cols</span>(kaggle_test <span style="color:#f92672">|&gt;</span> <span style="color:#a6e22e">select</span>(id)) <span style="color:#f92672">|&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">transmute</span>(id, outcome <span style="color:#f92672">=</span> .pred_yes)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">write_csv</span>(submission, <span style="color:#e6db74">&#34;submission.csv&#34;</span>)
-</span></span></code></pre></div><p>Then, submit the file and see where it lands. If the public score and the resampling results tell different stories, I trust the resampling results first. A public leaderboard is still a sample, and repeatedly submitting against it is another way to overfit.</p>
+
+<pre><code class="language-r">final_workflow &lt;- rf_workflow |&gt;
+  finalize_workflow(select_best(rf_results, metric = &quot;roc_auc&quot;))
+
+final_fit &lt;- final_workflow |&gt;
+  fit(data = train_data)
+
+submission &lt;- predict(final_fit, kaggle_test, type = &quot;prob&quot;) |&gt;
+  bind_cols(kaggle_test |&gt; select(id)) |&gt;
+  transmute(id, outcome = .pred_yes)
+
+write_csv(submission, &quot;submission.csv&quot;)
+</code></pre>
+
+<p>Then, submit the file and see where it lands. If the public score and the resampling results tell different stories, I trust the resampling results first. A public leaderboard is still a sample, and repeatedly submitting against it is another way to overfit.</p>
+
 <p>What I like about this workflow is that it scales beyond a competition. The recipe, model specification and tuning results can be saved, reviewed and reused. Kaggle makes the exercise fun. Tidymodels makes the result reproducible.</p>
          
       </div>

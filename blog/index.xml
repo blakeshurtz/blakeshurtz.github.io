@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Blake Shurtz</title>
+    <link>https://blakeshurtz.github.io/blog/</link>
+    <description>Recent content in Blog on Blake Shurtz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Oct 2026 12:00:00 -0400</lastBuildDate>
+    
+	<atom:link href="https://blakeshurtz.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>text</title>
+      <link>https://blakeshurtz.github.io/blog/text/</link>
+      <pubDate>Sun, 25 Oct 2026 12:00:00 -0400</pubDate>
+      
+      <guid>https://blakeshurtz.github.io/blog/text/</guid>
+      <description>Writing can start with a small observation, a question, or an idea that needs more room. Putting it into words gives it a shape we can examine and share.
+A blog offers a simple place for that process. Each entry stands on its own, while the collection records how ideas develop over time. Some posts may explore a subject in depth; others may capture a thought before it slips away.</description>
+    </item>
+    
+  </channel>
+</rss>
