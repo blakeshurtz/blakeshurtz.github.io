@@ -20,15 +20,5 @@
       <description>I haven&amp;rsquo;t started using dots yet. Apparently you can use your voice to design a rocketship and build it in Blender. OK, so what is. It&amp;rsquo;s the voices API plus an integration, perhaps an MCP server. I&amp;rsquo;m not there yet. I&amp;rsquo;ve tried voice before with mixed results. I think there&amp;rsquo;s a lot of potential, but we&amp;rsquo;re going to see a lot of weirdness as we learn how to build. I&amp;rsquo;m seeing this on Reddit with AI job interviewers.</description>
     </item>
     
-    <item>
-      <title>text</title>
-      <link>https://blakeshurtz.github.io/blog/text/</link>
-      <pubDate>Sun, 25 Oct 2026 12:00:00 -0400</pubDate>
-      
-      <guid>https://blakeshurtz.github.io/blog/text/</guid>
-      <description>Writing can start with a small observation, a question, or an idea that needs more room. Putting it into words gives it a shape we can examine and share.
-A blog offers a simple place for that process. Each entry stands on its own, while the collection records how ideas develop over time. Some posts may explore a subject in depth; others may capture a thought before it slips away.</description>
-    </item>
-    
   </channel>
 </rss>
